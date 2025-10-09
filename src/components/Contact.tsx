@@ -26,43 +26,43 @@ export default function Contact() {
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-300">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Mail className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-                  <p className="text-gray-400">info@futurecomputer.edu</p>
-                  <p className="text-gray-400">admissions@futurecomputer.edu</p>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">Email Us</h3>
+                  <p className="text-gray-600">info@futurecomputer.edu</p>
+                  <p className="text-gray-600">admissions@futurecomputer.edu</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-300">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Phone className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-                  <p className="text-gray-400">+91 9876543210</p>
-                  <p className="text-gray-400">+91 9876543211</p>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">Call Us</h3>
+                  <p className="text-gray-600">+91 9876543210</p>
+                  <p className="text-gray-600">+91 9876543211</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-300">
               <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
                   <MapPin className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
-                  <p className="text-gray-400">
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">Visit Us</h3>
+                  <p className="text-gray-600">
                     123 Innovation Street, Tech City
                   </p>
-                  <p className="text-gray-400">Digital Hub, IN 560001</p>
+                  <p className="text-gray-600">Digital Hub, IN 560001</p>
                 </div>
               </div>
             </div>

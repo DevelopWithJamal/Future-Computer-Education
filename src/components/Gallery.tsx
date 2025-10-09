@@ -111,8 +111,8 @@ export default function Gallery() {
                 onClick={() => setCurrentSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? 'bg-cyan-500 w-8'
-                    : 'bg-gray-600 hover:bg-gray-500'
+                    ? 'bg-gray-900 w-8'
+                    : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}

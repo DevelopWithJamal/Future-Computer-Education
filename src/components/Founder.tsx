@@ -93,20 +93,20 @@ export default function Founder() {
               </div>
 
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 text-center">
-                  <Heart className="text-cyan-400 mx-auto mb-2" size={24} />
-                  <div className="text-2xl font-bold text-cyan-400">500+</div>
-                  <div className="text-sm text-gray-400">Lives Impacted</div>
+                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+                  <Heart className="text-gray-900 mx-auto mb-2" size={24} />
+                  <div className="text-2xl font-bold text-gray-900">500+</div>
+                  <div className="text-sm text-gray-600">Lives Impacted</div>
                 </div>
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 text-center">
-                  <Award className="text-cyan-400 mx-auto mb-2" size={24} />
-                  <div className="text-2xl font-bold text-cyan-400">10+</div>
-                  <div className="text-sm text-gray-400">Awards Won</div>
+                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+                  <Award className="text-gray-900 mx-auto mb-2" size={24} />
+                  <div className="text-2xl font-bold text-gray-900">10+</div>
+                  <div className="text-sm text-gray-600">Awards Won</div>
                 </div>
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700 text-center">
-                  <Target className="text-cyan-400 mx-auto mb-2" size={24} />
-                  <div className="text-2xl font-bold text-cyan-400">98%</div>
-                  <div className="text-sm text-gray-400">Success Rate</div>
+                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
+                  <Target className="text-gray-900 mx-auto mb-2" size={24} />
+                  <div className="text-2xl font-bold text-gray-900">98%</div>
+                  <div className="text-sm text-gray-600">Success Rate</div>
                 </div>
               </div>
 
