@@ -1,0 +1,38 @@
+import { useState, useEffect } from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Courses from './components/Courses';
+import Gallery from './components/Gallery';
+import RobotShowcase from './components/RobotShowcase';
+import Founder from './components/Founder';
+import Contact from './components/Contact';
+import FloatingButtons from './components/FloatingButtons';
+import Navigation from './components/Navigation';
+
+function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
+      <Navigation scrolled={scrolled} />
+      <Hero />
+      <About />
+      <Courses />
+      <Gallery />
+      <RobotShowcase />
+      <Founder />
+      <Contact />
+      <FloatingButtons />
+    </div>
+  );
+}
+
+export default App;
