@@ -8,6 +8,7 @@ import Founder from './components/Founder';
 import Contact from './components/Contact';
 import FloatingButtons from './components/FloatingButtons';
 import Navigation from './components/Navigation';
+import OurServices from './components/OurServices';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,6 +26,7 @@ function App() {
       <Navigation scrolled={scrolled} />
       <Hero />
       <About />
+      <OurServices></OurServices>
       <Courses />
       <Gallery />
       <RobotShowcase />

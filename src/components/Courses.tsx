@@ -28,7 +28,7 @@ export default function Courses() {
       title: 'Web Development',
       description:
         'Master HTML, CSS, JavaScript, React, Node.js, and build modern responsive websites and web applications.',
-      duration: '6 months',
+      duration: '3 months',
       level: 'Beginner to Advanced',
       color: 'bg-gray-900',
     },
@@ -37,7 +37,7 @@ export default function Courses() {
       title: 'AI & Machine Learning',
       description:
         'Dive into artificial intelligence, neural networks, deep learning, and create intelligent systems.',
-      duration: '8 months',
+      duration: '4 months',
       level: 'Intermediate',
       color: 'bg-red-500',
     },
@@ -46,25 +46,25 @@ export default function Courses() {
       title: 'Robotics & IoT',
       description:
         'Build robots, program microcontrollers, work with sensors, and create IoT solutions for real-world problems.',
-      duration: '7 months',
+      duration: '3 months',
       level: 'Beginner to Advanced',
       color: 'bg-gray-700',
     },
     {
-      icon: Database,
-      title: 'Data Science',
-      description:
-        'Learn data analysis, visualization, statistics, and machine learning to extract insights from data.',
-      duration: '6 months',
-      level: 'Intermediate',
-      color: 'bg-gray-600',
+        icon: Database,
+        title: 'Power BI',
+  description:
+    'Learn to create interactive dashboards, reports, and visual insights using Power BI.',
+  duration: '6 months',
+  level: 'Intermediate',
+  color: 'bg-gray-600',     
     },
     {
       icon: Globe,
       title: 'Full Stack Development',
       description:
         'Become a complete developer with frontend, backend, databases, and deployment skills.',
-      duration: '10 months',
+      duration: '4 months',
       level: 'Advanced',
       color: 'bg-gray-500',
     },

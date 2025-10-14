@@ -18,14 +18,18 @@ export default function FloatingButtons() {
   };
 
   const openWhatsApp = () => {
-    window.open('https://wa.me/919876543210', '_blank');
+    window.open(
+      'https://wa.me/919994707665?text=Hi%2C%20I\'m%20interested%20in%20the%20courses%20offered%20by%20Future%20Computer%20Education.',
+      '_blank'
+    );
   };
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
+      {/* WhatsApp Chat Button */}
       <button
         onClick={openWhatsApp}
-        className="group w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-green-500/50 flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce"
+        className="group w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-green-500/50 flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce relative"
         aria-label="Contact on WhatsApp"
       >
         <MessageCircle size={28} className="text-white" />
@@ -34,10 +38,11 @@ export default function FloatingButtons() {
         </span>
       </button>
 
+      {/* Scroll to Top Button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="group w-14 h-14 bg-blue-600 rounded-lg shadow-lg hover:shadow-blue-600/50 flex items-center justify-center transition-all duration-300 hover:scale-105 animate-fade-in"
+          className="group w-14 h-14 bg-blue-600 rounded-lg shadow-lg hover:shadow-blue-600/50 flex items-center justify-center transition-all duration-300 hover:scale-105 animate-fade-in relative"
           aria-label="Scroll to top"
         >
           <ArrowUp size={28} className="text-white" />

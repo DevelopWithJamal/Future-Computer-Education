@@ -58,13 +58,13 @@ export default function Founder() {
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl blur-xl opacity-30"></div>
               <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 border border-cyan-500/30 shadow-2xl">
                 <div className="w-full aspect-square bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center text-8xl font-bold mb-6">
-                  FCE
+                  <img className='rounded-lg' src="/public/logo/md.jpg" alt="" />
                 </div>
 
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold mb-2">Dr. Rajesh Kumar</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-yellow-200">Mohamed Saleem</h3>
                   <p className="text-cyan-400 mb-4">
-                    Founder & Chief Education Officer
+                    Founder & Head of Operations
                   </p>
                   <div className="flex justify-center space-x-4 text-gray-400">
                     <div className="flex items-center space-x-1">

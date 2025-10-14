@@ -13,7 +13,7 @@ export default function Contact() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-white text-4xl md:text-5xl font-bold mb-4">
             Get in{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Touch
@@ -23,7 +23,7 @@ export default function Contact() {
             Ready to start your journey? Contact us today and transform your future
           </p>
         </div>
-
+    
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-300">
@@ -33,8 +33,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900">Email Us</h3>
-                  <p className="text-gray-600">info@futurecomputer.edu</p>
-                  <p className="text-gray-600">admissions@futurecomputer.edu</p>
+                  <p className="text-gray-600">futurecomputereducationnagai@gmail.co</p>
+                   
                 </div>
               </div>
             </div>
@@ -46,8 +46,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900">Call Us</h3>
-                  <p className="text-gray-600">+91 9876543210</p>
-                  <p className="text-gray-600">+91 9876543211</p>
+                  <p className="text-gray-600">+91 99947 07665</p>
+                  <p className="text-gray-600">+91 99448 62333</p>
                 </div>
               </div>
             </div>
@@ -60,9 +60,9 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900">Visit Us</h3>
                   <p className="text-gray-600">
-                    123 Innovation Street, Tech City
+                      346/2, EGS Pillai Road, South Palpannaicherry,
                   </p>
-                  <p className="text-gray-600">Digital Hub, IN 560001</p>
+                  <p className="text-gray-600">Velippalayam, Nagapattinam, Tamil Nadu – 611003, India</p>
                 </div>
               </div>
             </div>
@@ -71,8 +71,8 @@ export default function Contact() {
               <h4 className="text-lg font-semibold mb-2 text-cyan-400">
                 Office Hours
               </h4>
-              <p className="text-gray-300">Monday - Friday: 9:00 AM - 6:00 PM</p>
-              <p className="text-gray-300">Saturday: 10:00 AM - 4:00 PM</p>
+              <p className="text-gray-300">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+              
               <p className="text-gray-300">Sunday: Closed</p>
             </div>
           </div>
@@ -130,13 +130,33 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-16 text-center text-gray-400">
+    
+        
+        {/* Map iframe */}
+        <div className="mt-12">
+          <h4 className="text-center text-lg font-semibold text-gray-200 mb-4">
+            Our Location
+          </h4>
+          <div className="w-full h-64 md:h-96 rounded-2xl overflow-hidden border border-gray-700">
+            <iframe
+              title="Future Computer Education Location"
+             src=' https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3548.277468801398!2d79.83627790000001!3d10.799151700000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a556d80ead9b1f7%3A0xbbbfeb481e447ffc!2sFUTURE%20COMPUTER%20EDUCATION!5e1!3m2!1sen!2sin!4v1760414612182!5m2!1sen!2sin'
+              width="100%"
+              height="100%"
+              className="border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+          <div className="mt-16 text-center text-gray-400">
           <p>
             © 2024 Future Computer Education. All rights reserved. | Empowering
             Future Innovators
           </p>
         </div>
-      </div>
     </section>
+    
   );
 }
