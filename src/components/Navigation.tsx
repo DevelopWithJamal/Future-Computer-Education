@@ -22,17 +22,17 @@ export default function Navigation({ scrolled }: NavigationProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md'
-          : 'bg-transparent'
+          ? 'bg-white shadow-sm border-b border-gray-200'
+          : 'bg-white/90 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">FCE</span>
+            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-semibold text-xl">FCE</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-semibold text-slate-900 tracking-tight">
               Future Computer Education
             </span>
           </div>
@@ -42,16 +42,16 @@ export default function Navigation({ scrolled }: NavigationProps) {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors duration-300 relative group"
+                className="text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group font-medium"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
 
           <button
-            className="md:hidden text-gray-900"
+            className="md:hidden text-slate-900"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}

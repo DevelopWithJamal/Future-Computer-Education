@@ -39,7 +39,7 @@ export default function Courses() {
         'Dive into artificial intelligence, neural networks, deep learning, and create intelligent systems.',
       duration: '8 months',
       level: 'Intermediate',
-      color: 'bg-gray-800',
+      color: 'bg-red-500',
     },
     {
       icon: Cpu,
@@ -75,7 +75,7 @@ export default function Courses() {
         'Create native and cross-platform mobile applications for Android and iOS using modern frameworks.',
       duration: '5 months',
       level: 'Intermediate',
-      color: 'bg-gray-800',
+      color: 'bg-slate-800',
     },
   ];
 
