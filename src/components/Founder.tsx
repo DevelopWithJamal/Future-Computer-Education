@@ -33,7 +33,7 @@ export default function Founder() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 transition-all duration-1000 ${
+            className={`text-4xl text-white md:text-5xl font-bold mb-4 transition-all duration-1000 ${
               isVisible
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'
@@ -58,7 +58,7 @@ export default function Founder() {
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-3xl blur-xl opacity-30"></div>
               <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 border border-cyan-500/30 shadow-2xl">
                 <div className="w-full aspect-square bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center text-8xl font-bold mb-6">
-                  <img className='rounded-lg' src="/public/logo/md.jpg" alt="" />
+                  <img className='rounded-lg' src="/logo/md.jpg" alt="" />
                 </div>
 
                 <div className="text-center">

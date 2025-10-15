@@ -23,7 +23,7 @@ export default function Contact() {
             Ready to start your journey? Contact us today and transform your future
           </p>
         </div>
-    
+
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-300">
@@ -78,7 +78,7 @@ export default function Contact() {
           </div>
 
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
-            <h3 className="text-2xl font-bold mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white">Send us a Message</h3>
             <form className="space-y-4">
               <div>
                 <input

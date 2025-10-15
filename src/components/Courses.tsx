@@ -1,5 +1,6 @@
 import { Code, Brain, Database, Cpu, Globe, Smartphone } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { ImageAutoSlider } from './ImageAutoSlider';
 
 export default function Courses() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,7 @@ export default function Courses() {
         'Master HTML, CSS, JavaScript, React, Node.js, and build modern responsive websites and web applications.',
       duration: '3 months',
       level: 'Beginner to Advanced',
-      color: 'bg-gray-900',
+      color: 'bg-blue-500',
     },
     {
       icon: Brain,
@@ -39,7 +40,7 @@ export default function Courses() {
         'Dive into artificial intelligence, neural networks, deep learning, and create intelligent systems.',
       duration: '4 months',
       level: 'Intermediate',
-      color: 'bg-red-500',
+      color: 'bg-blue-500',
     },
     {
       icon: Cpu,
@@ -48,7 +49,7 @@ export default function Courses() {
         'Build robots, program microcontrollers, work with sensors, and create IoT solutions for real-world problems.',
       duration: '3 months',
       level: 'Beginner to Advanced',
-      color: 'bg-gray-700',
+      color: 'bg-blue-500',
     },
     {
         icon: Database,
@@ -57,7 +58,7 @@ export default function Courses() {
     'Learn to create interactive dashboards, reports, and visual insights using Power BI.',
   duration: '6 months',
   level: 'Intermediate',
-  color: 'bg-gray-600',     
+  color: 'bg-blue-500',     
     },
     {
       icon: Globe,
@@ -66,7 +67,7 @@ export default function Courses() {
         'Become a complete developer with frontend, backend, databases, and deployment skills.',
       duration: '4 months',
       level: 'Advanced',
-      color: 'bg-gray-500',
+      color: 'bg-blue-500',
     },
     {
       icon: Smartphone,
@@ -75,7 +76,7 @@ export default function Courses() {
         'Create native and cross-platform mobile applications for Android and iOS using modern frameworks.',
       duration: '5 months',
       level: 'Intermediate',
-      color: 'bg-slate-800',
+      color: 'bg-blue-500',
     },
   ];
 
@@ -153,6 +154,12 @@ export default function Courses() {
           ))}
         </div>
       </div>
+      {/* Add Image Auto Slider below Courses */}
+<section className="py-20 bg-gray-50">
+  <h2 className="text-4xl font-bold text-center mb-12">Our Courses Gallery</h2>
+ <ImageAutoSlider></ImageAutoSlider>
+</section>
+
     </section>
   );
 }

@@ -35,21 +35,21 @@ export default function About() {
       title: 'Expert Trainers',
       description:
         'Learn from industry professionals with 10+ years of experience in AI, robotics, and software development.',
-      color: 'bg-red-500',
+      color: 'bg-blue-600',
     },
     {
       icon: Award,
       title: '100% Placement Support',
       description:
         'Comprehensive career guidance, mock interviews, and dedicated placement assistance to launch your tech career.',
-      color: 'bg-slate-800',
+      color: 'bg-blue-600',
     },
     {
       icon: Zap,
       title: 'Hands-On Projects',
       description:
         'Build real-world projects and gain practical experience with cutting-edge technologies and robotics kits.',
-      color: 'bg-blue-700',
+      color: 'bg-blue-600',
     },
   ];
 

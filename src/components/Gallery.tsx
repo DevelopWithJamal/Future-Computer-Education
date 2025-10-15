@@ -49,7 +49,7 @@ export default function Gallery() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl text-white md:text-5xl font-bold mb-4">
             Our{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Labs & Facilities
@@ -78,7 +78,7 @@ export default function Gallery() {
                     <div className="w-32 h-32 md:w-48 md:h-48 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center text-6xl md:text-8xl font-bold">
                       {index + 1}
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                    <h3 className="text-3xl text-white md:text-4xl font-bold mb-4">
                       {image.title}
                     </h3>
                     <p className="text-lg md:text-xl text-gray-300">

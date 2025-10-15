@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { ChevronRight, Sparkles } from 'lucide-react';
 import heroVideo from '../video/hero.mp4';
+import { DemoOne } from './ImageAutoSlider';
 
 export default function Hero() {
+  const whatsappNumber = '+919363706033';
+
   return (
-    <section
-      id="home"
-      className="w-full pt-32 md:pt-40 bg-gradient-to-b from-white to-blue-50 overflow-hidden"
-    >
+    <section id="home" className="w-full pt-32 md:pt-30 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 md:px-10">
         {/* Left: Content */}
         <div className="flex-1 flex flex-col justify-center text-center md:text-left">
@@ -28,20 +29,26 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-12">
-            <a
-              href="#services"
+            <Link
+              to="/courses"
               className="group px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 transition-all duration-300"
             >
               <span>Explore Courses</span>
-              <ChevronRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </a>
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+
+            {/* WhatsApp Button */}
             <a
-              href="#contact"
-              className="px-8 py-4 bg-transparent border-2 border-blue-600 text-blue-600 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all duration-300 text-center"
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center px-6 py-3 border-2 border-green-500 text-green-500 rounded-lg font-semibold text-lg hover:bg-green-50 hover:shadow-md transition-all duration-300"
             >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                alt="WhatsApp"
+                className="w-6 h-6 mr-2"
+              />
               Get in Touch
             </a>
           </div>
@@ -66,17 +73,12 @@ export default function Hero() {
         {/* Right: Video */}
         <div className="flex-1 flex items-center justify-center mt-10 md:mt-0">
           <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-xl border border-blue-100">
-            <video
-              src={heroVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            />
+            <video src={heroVideo} autoPlay muted loop playsInline className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
     </section>
+   
+ 
   );
 }
