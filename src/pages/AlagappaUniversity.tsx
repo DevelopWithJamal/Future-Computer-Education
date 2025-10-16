@@ -1,5 +1,5 @@
 import { Briefcase } from 'lucide-react';
-import FCELogo from '../assets/future-computer-education-logo.png';
+ 
 import AlagappaLogo from '../assets/alagappa-logo.png';
 
 // Import course images
