@@ -20,11 +20,11 @@ export default function Hero() {
           </div>
 
           {/* Main Text */}
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight text-slate-900 mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight text-blue-900 mb-6">
             Future Computer Education
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-700 mb-10 max-w-2xl mx-auto md:mx-0">
+          <p className="text-lg md:text-xl text-blue-700 mb-10 max-w-2xl mx-auto md:mx-0">
             Empowering the next generation of innovators with cutting-edge skills in AI,
             Robotics, and Advanced Technology.
           </p>
@@ -47,7 +47,7 @@ export default function Hero() {
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center px-6 py-3 border-2 border-green-500 text-green-500 rounded-lg font-semibold text-lg hover:bg-green-50 hover:shadow-md transition-all duration-300"
+              className="flex items-center justify-center px-6 py-3 border-2 border-blue-500 text-blue-600 rounded-lg font-semibold text-lg hover:bg-blue-50 hover:shadow-md transition-all duration-300"
             >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
@@ -63,15 +63,15 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center md:justify-start gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-600">500+</div>
-              <div className="text-slate-600 mt-2 font-medium">Students Trained</div>
+              <div className="text-blue-600 mt-2 font-medium">Students Trained</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-600">15+</div>
-              <div className="text-slate-600 mt-2 font-medium">Expert Trainers</div>
+              <div className="text-blue-600 mt-2 font-medium">Expert Trainers</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-blue-600">100%</div>
-              <div className="text-slate-600 mt-2 font-medium">Placement Support</div>
+              <div className="text-blue-600 mt-2 font-medium">Placement Support</div>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function Hero() {
               muted
               loop
               playsInline
-              preload="none"        // <-- lazy loading video
+              preload="none"
               className="w-full h-full object-cover"
             />
           </div>
