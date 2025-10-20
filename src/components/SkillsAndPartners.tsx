@@ -1,101 +1,142 @@
-import { Laptop, Scissors, Cpu, Pencil } from 'lucide-react';
-import tnSkillLogo from '../assets/tnskill-logo.png';
-import vetriLogo from '../assets/vetri-logo.png'; // Vetri Nichayam logo in assets
+import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-interface Course {
-  name: string;
-  description: string;
-  icon: JSX.Element;
-  category: string;
+interface NavigationProps {
+  scrolled: boolean;
 }
 
-interface Partner {
-  name: string;
-  logo: string;
-  link: string;
-}
+export default function Navigation({ scrolled }: NavigationProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-export default function SkillsAndPartners(): JSX.Element {
-  const courses: Course[] = [
-    {
-      name: 'Tailoring Courses',
-      description: 'Professional tailoring and garment making with hands-on training.',
-      icon: <Scissors size={28} className="text-white" />,
-      category: 'Tailoring',
-    },
-    {
-      name: 'Computer CAD Training',
-      description: 'Master CAD software for engineering, design, and modeling.',
-      icon: <Pencil size={28} className="text-white" />,
-      category: 'CAD',
-    },
-    {
-      name: 'Computer Fundamentals',
-      description: 'Basic computer skills for office, IT, and career readiness.',
-      icon: <Laptop size={28} className="text-white" />,
-      category: 'Computers',
-    },
-    {
-      name: 'Advanced Computer Courses',
-      description: 'Programming, AI, Robotics, and other advanced technology skills.',
-      icon: <Cpu size={28} className="text-white" />,
-      category: 'Programming',
-    },
+  const navLinks = [
+    { name: 'Home', path: '/', sectionId: 'home' },
+    { name: 'About', path: '/', sectionId: 'about' },
+    { name: 'Courses', path: '/', sectionId: 'courses' },
+    { name: 'Skill Training', path: '/', sectionId: 'skills' },
+    { name: 'Partners', path: '/', sectionId: 'partners' },
+    { name: 'Alagappa', path: '/alagappa', sectionId: null },
+    { name: 'Gallery', path: '/', sectionId: 'gallery' },
+    { name: 'Robots', path: '/', sectionId: 'robots' },
+    { name: 'Founder', path: '/', sectionId: 'founder' },
+    { name: 'Contact', path: '/', sectionId: 'contact' },
   ];
 
-  const partners: Partner[] = [
-    { name: 'TN Skill', logo: tnSkillLogo, link: 'https://candidate.tnskill.tn.gov.in/skillwallet/' },
-    { name: 'Vetri Nichayam', logo: vetriLogo, link: 'https://vetri-nichayam.example.com' }, // replace with actual link
-  ];
+  const handleClick = (path: string, sectionId: string | null) => {
+    setMobileMenuOpen(false);
+
+    if (path !== location.pathname) {
+      // Navigate to home first, then scroll
+      navigate(path);
+      if (sectionId) {
+        setTimeout(() => {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            const offset = 70;
+            const top = section.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }, 100); // small delay
+      }
+    } else if (sectionId) {
+      // Already on the same page, scroll directly
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = 70;
+        const top = section.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  };
+
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
+  }, [mobileMenuOpen]);
+
+  // Update active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      navLinks.forEach((link) => {
+        if (link.sectionId) {
+          const section = document.getElementById(link.sectionId);
+          if (section) {
+            const offsetTop = section.offsetTop - 80;
+            const offsetBottom = offsetTop + section.offsetHeight;
+            if (window.scrollY >= offsetTop && window.scrollY < offsetBottom) {
+              setActiveSection(link.sectionId!);
+            }
+          }
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* Section Title */}
-        <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4">
-          Skill-Based Training & Partners
-        </h2>
-        <p className="text-blue-700 max-w-3xl mx-auto mb-16 text-lg md:text-xl">
-          Future Computer Education partners with TN Skill and Vetri Nichayam to provide high-quality skill-based training programs designed for career growth, entrepreneurship, and hands-on expertise.
-        </p>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white shadow-sm border-b border-gray-200'
+          : 'bg-white/90 backdrop-blur-sm'
+      }`}
+    >
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <div
+          className="flex items-center space-x-2 cursor-pointer"
+          onClick={() => handleClick('/', 'home')}
+        >
+          <span className="flex justify-center gap-2 items-center text-xl font-bold text-blue-900 tracking-tight">
+            <h1 className="text-4xl text-red-600">FUTURE</h1> COMPUTER EDUCATION
+          </span>
+        </div>
 
-        {/* Partners Carousel */}
-        <div className="flex justify-center items-center gap-12 mb-20 flex-wrap">
-          {partners.map((partner) => (
-            <a
-              key={partner.name}
-              href={partner.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white p-4 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <button
+              key={link.name}
+              onClick={() => handleClick(link.path, link.sectionId)}
+              className={`text-slate-700 transition-colors duration-300 relative group font-medium ${
+                activeSection === link.sectionId ? 'text-blue-600' : ''
+              }`}
             >
-              <img src={partner.logo} alt={partner.name} className="h-24 md:h-28 object-contain" />
-            </a>
+              {link.name}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+            </button>
           ))}
         </div>
 
-        {/* Courses Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {courses.map((course, idx) => (
-            <div
-              key={idx}
-              className="group relative bg-white rounded-3xl shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-500 overflow-hidden"
-            >
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-tr from-blue-400 to-purple-500 rounded-full opacity-20 transform rotate-45"></div>
-              <div className="p-6 relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {course.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-blue-900 mb-2 text-center">{course.name}</h3>
-                <p className="text-gray-700 text-center text-sm md:text-base">{course.description}</p>
-                <span className="mt-4 inline-block bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">
-                  {course.category}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-slate-900"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
-    </section>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden px-4 pb-4 space-y-2 bg-white border-t border-gray-200 animate-fade-in">
+          {navLinks.map((link) => (
+            <button
+              key={link.name}
+              onClick={() => handleClick(link.path, link.sectionId)}
+              className={`block py-2 w-full text-left font-medium transition-colors duration-300 ${
+                activeSection === link.sectionId ? 'text-blue-600' : 'text-gray-700'
+              }`}
+            >
+              {link.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </nav>
   );
 }

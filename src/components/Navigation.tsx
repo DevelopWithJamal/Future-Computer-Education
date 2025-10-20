@@ -27,16 +27,20 @@ export default function Navigation({ scrolled }: NavigationProps) {
 
   const handleClick = (path: string, sectionId: string | null) => {
     setMobileMenuOpen(false);
-    if (path === location.pathname && sectionId) {
+
+    // If sectionId exists, scroll to it
+    if (sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
-        const offset = 70;
+        const offset = 70; // Navbar height
         const top = section.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
+        return;
       }
-    } else {
-      navigate(path);
     }
+
+    // Navigate to another page
+    navigate(path);
   };
 
   // Lock scroll when mobile menu open
@@ -51,7 +55,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
         if (link.sectionId) {
           const section = document.getElementById(link.sectionId);
           if (section) {
-            const offsetTop = section.offsetTop - 80;
+            const offsetTop = section.offsetTop - 80; // Navbar height
             const offsetBottom = offsetTop + section.offsetHeight;
             if (window.scrollY >= offsetTop && window.scrollY < offsetBottom) {
               setActiveSection(link.sectionId!);
@@ -79,7 +83,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
           onClick={() => handleClick('/', 'home')}
         >
           <span className="flex justify-center gap-2 items-center text-xl font-bold text-blue-900 tracking-tight">
-            <h1 className="text-4xl  text-red-600">FUTURE</h1> COMPUTER EDUCATION
+            <h1 className="text-4xl text-red-600">FUTURE</h1> COMPUTER EDUCATION
           </span>
         </div>
 
