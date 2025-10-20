@@ -6,15 +6,28 @@ export default function Hero() {
   const whatsappNumber = '+919363706033';
 
   return (
-    
     <section
-      
       id="home"
       className="w-full pt-32 md:pt-30 bg-gradient-to-b from-white to-blue-50 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 md:px-10">
-        {/* Left: Content */}
-        <div className="flex-1 flex flex-col justify-center text-center md:text-left">
+        {/* Video first on mobile, second on desktop */}
+        <div className="flex-1 flex items-center justify-center mt-10 md:mt-0 order-1 md:order-2">
+          <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-xl border border-blue-100">
+            <video
+              src={heroVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Content first on desktop, second on mobile */}
+        <div className="flex-1 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
           {/* Tagline */}
           <div className="inline-flex mb-8 items-center space-x-2 px-5 py-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 text-sm font-medium mx-auto md:mx-0">
             <Sparkles size={16} />
@@ -75,21 +88,6 @@ export default function Hero() {
               <div className="text-4xl font-bold text-blue-600">100%</div>
               <div className="text-blue-600 mt-2 font-medium">Placement Support</div>
             </div>
-          </div>
-        </div>
-
-        {/* Right: Video */}
-        <div className="flex-1 flex items-center justify-center mt-10 md:mt-0">
-          <div className="relative w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-xl border border-blue-100">
-            <video
-              src={heroVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="none"
-              className="w-full h-full object-cover"
-            />
           </div>
         </div>
       </div>

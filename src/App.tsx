@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
-import OurServices from './components/OurServices';
+ 
 import Courses from './components/Courses';
 import Gallery from './components/Gallery';
 import RobotShowcase from './components/RobotShowcase';
@@ -11,6 +11,7 @@ import Founder from './components/Founder';
 import Contact from './components/Contact';
 import FloatingButtons from './components/FloatingButtons';
 import AlagappaUniversity from './pages/AlagappaUniversity';
+import SkillsAndPartners from './components/SkillsAndPartners';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,8 @@ function App() {
               
               <About />
               <Founder />
-              <OurServices />
+              <SkillsAndPartners /> 
+       
               <Courses /> 
               <Gallery />
               <RobotShowcase />

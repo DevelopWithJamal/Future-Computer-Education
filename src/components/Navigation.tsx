@@ -8,6 +8,7 @@ interface NavigationProps {
 
 export default function Navigation({ scrolled }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -15,8 +16,9 @@ export default function Navigation({ scrolled }: NavigationProps) {
     { name: 'Home', path: '/', sectionId: 'home' },
     { name: 'About', path: '/', sectionId: 'about' },
     { name: 'Courses', path: '/', sectionId: 'courses' },
-    { name: 'Services', path: '/', sectionId: 'services' },
-    { name: 'Alagappa', path: '/alagappa', sectionId: null }, // new page
+    { name: 'Skill Training', path: '/', sectionId: 'skills' },
+    { name: 'Partners', path: '/', sectionId: 'partners' },
+    { name: 'Alagappa', path: '/alagappa', sectionId: null },
     { name: 'Gallery', path: '/', sectionId: 'gallery' },
     { name: 'Robots', path: '/', sectionId: 'robots' },
     { name: 'Founder', path: '/', sectionId: 'founder' },
@@ -25,25 +27,42 @@ export default function Navigation({ scrolled }: NavigationProps) {
 
   const handleClick = (path: string, sectionId: string | null) => {
     setMobileMenuOpen(false);
-
     if (path === location.pathname && sectionId) {
-      // On home page, scroll to section
       const section = document.getElementById(sectionId);
       if (section) {
-        const offset = 70; // navbar height
+        const offset = 70;
         const top = section.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     } else {
-      // Navigate to another page
       navigate(path);
     }
   };
 
-  // Disable background scroll when mobile menu is open
+  // Lock scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
   }, [mobileMenuOpen]);
+
+  // Update active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      navLinks.forEach(link => {
+        if (link.sectionId) {
+          const section = document.getElementById(link.sectionId);
+          if (section) {
+            const offsetTop = section.offsetTop - 80;
+            const offsetBottom = offsetTop + section.offsetHeight;
+            if (window.scrollY >= offsetTop && window.scrollY < offsetBottom) {
+              setActiveSection(link.sectionId!);
+            }
+          }
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav
@@ -59,9 +78,8 @@ export default function Navigation({ scrolled }: NavigationProps) {
           className="flex items-center space-x-2 cursor-pointer"
           onClick={() => handleClick('/', 'home')}
         >
-         
           <span className="flex justify-center gap-2 items-center text-xl font-bold text-blue-900 tracking-tight">
-            <h1 className='text-4xl text-purple-600'>Future</h1> Computer Education
+            <h1 className="text-4xl text-purple-600">Future</h1> Computer Education
           </span>
         </div>
 
@@ -71,7 +89,9 @@ export default function Navigation({ scrolled }: NavigationProps) {
             <button
               key={link.name}
               onClick={() => handleClick(link.path, link.sectionId)}
-              className="text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group font-medium"
+              className={`text-slate-700 transition-colors duration-300 relative group font-medium ${
+                activeSection === link.sectionId ? 'text-blue-600' : ''
+              }`}
             >
               {link.name}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
@@ -95,7 +115,9 @@ export default function Navigation({ scrolled }: NavigationProps) {
             <button
               key={link.name}
               onClick={() => handleClick(link.path, link.sectionId)}
-              className="block text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2 w-full text-left font-medium"
+              className={`block py-2 w-full text-left font-medium transition-colors duration-300 ${
+                activeSection === link.sectionId ? 'text-blue-600' : 'text-gray-700'
+              }`}
             >
               {link.name}
             </button>
