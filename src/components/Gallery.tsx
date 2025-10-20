@@ -25,6 +25,12 @@ export default function Gallery() {
       title: 'Coding Classroom',
       description: 'Collaborative learning environment',
     },
+       {
+        title: 'Lab Section',
+      description: 'Collaborative learning environment',
+
+       } 
+    
   ];
 
   useEffect(() => {
@@ -77,9 +83,12 @@ export default function Gallery() {
                   <div className="text-center z-10 p-8">
                     <div className="w-32 h-32 md:w-48 md:h-48 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center text-6xl md:text-8xl font-bold">
                       {index + 1}
+                     
+
                     </div>
                     <h3 className="text-3xl text-white md:text-4xl font-bold mb-4">
                       {image.title}
+                     
                     </h3>
                     <p className="text-lg md:text-xl text-gray-300">
                       {image.description}

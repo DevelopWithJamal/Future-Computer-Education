@@ -6,7 +6,9 @@ export default function Hero() {
   const whatsappNumber = '+919363706033';
 
   return (
+    
     <section
+      
       id="home"
       className="w-full pt-32 md:pt-30 bg-gradient-to-b from-white to-blue-50 overflow-hidden"
     >
@@ -62,11 +64,11 @@ export default function Hero() {
           {/* Stats */}
           <div className="flex flex-wrap justify-center md:justify-start gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">500+</div>
+              <div className="text-4xl font-bold text-blue-600">1000+</div>
               <div className="text-blue-600 mt-2 font-medium">Students Trained</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">15+</div>
+              <div className="text-4xl font-bold text-blue-600">25+</div>
               <div className="text-blue-600 mt-2 font-medium">Expert Trainers</div>
             </div>
             <div className="text-center">

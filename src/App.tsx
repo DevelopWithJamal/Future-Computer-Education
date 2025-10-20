@@ -22,6 +22,7 @@ function App() {
   }, []);
 
   return (
+    
     <Router>
       <Navigation scrolled={scrolled} />
       <Routes>
@@ -31,12 +32,14 @@ function App() {
           element={
             <>
               <Hero />
+              
               <About />
+              <Founder />
               <OurServices />
               <Courses /> 
               <Gallery />
               <RobotShowcase />
-              <Founder />
+             
               <Contact />
               <FloatingButtons />
             </>
