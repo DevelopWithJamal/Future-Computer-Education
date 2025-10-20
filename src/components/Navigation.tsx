@@ -79,7 +79,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
           onClick={() => handleClick('/', 'home')}
         >
           <span className="flex justify-center gap-2 items-center text-xl font-bold text-blue-900 tracking-tight">
-            <h1 className="text-4xl text-purple-600">Future</h1> Computer Education
+            <h1 className="text-4xl  text-red-600">FUTURE</h1> COMPUTER EDUCATION
           </span>
         </div>
 

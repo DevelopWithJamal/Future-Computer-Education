@@ -28,84 +28,74 @@ export default function About() {
       title: 'Online & Offline Learning',
       description:
         'Flexible learning modes to suit your schedule. Attend live online sessions or join our state-of-the-art physical labs.',
-      color: 'bg-blue-600',
+      colorFrom: 'from-blue-500',
+      colorTo: 'to-purple-500',
     },
     {
       icon: Users,
       title: 'Expert Trainers',
       description:
         'Learn from industry professionals with 10+ years of experience in AI, robotics, and software development.',
-      color: 'bg-blue-600',
+      colorFrom: 'from-green-400',
+      colorTo: 'to-blue-500',
     },
     {
       icon: Award,
       title: '100% Placement Support',
       description:
         'Comprehensive career guidance, mock interviews, and dedicated placement assistance to launch your tech career.',
-      color: 'bg-blue-600',
+      colorFrom: 'from-yellow-400',
+      colorTo: 'to-orange-500',
     },
     {
       icon: Zap,
       title: 'Hands-On Projects',
       description:
         'Build real-world projects and gain practical experience with cutting-edge technologies and robotics kits.',
-      color: 'bg-blue-600',
+      colorFrom: 'from-pink-500',
+      colorTo: 'to-red-500',
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-slate-50 relative overflow-hidden">
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section id="about" className="py-24 bg-gray-50 relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 transition-all duration-1000 ${
-              isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
+            className={`text-4xl md:text-5xl font-extrabold mb-4 transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
             Why Choose{' '}
-            <span className="text-slate-900">
-              Future Computer Education
-            </span>
+            <span className="text-blue-900">Future Computer Education</span>
           </h2>
           <p
-            className={`text-xl text-slate-600 max-w-2xl mx-auto transition-all duration-1000 delay-200 font-normal ${
-              isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
+            className={`text-lg md:text-xl text-gray-700 max-w-3xl mx-auto transition-all duration-1000 delay-200 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            We provide world-class training with a perfect blend of theory and practical knowledge
+            We provide world-class training with a perfect blend of theory, practical knowledge, and career-focused guidance.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, idx) => (
             <div
-              key={index}
-              className={`group relative bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg ${
-                isVisible
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
+              key={idx}
+              className={`group relative bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-2xl transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <div
-                className={`w-14 h-14 rounded-xl ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                className={`w-16 h-16 rounded-xl bg-gradient-to-br ${feature.colorFrom} ${feature.colorTo} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
               >
                 <feature.icon size={28} className="text-white" />
               </div>
-
-              <h3 className="text-xl font-semibold mb-3 text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors duration-300 text-center">
                 {feature.title}
               </h3>
-
-              <p className="text-slate-600 leading-relaxed">
-                {feature.description}
-              </p>
-
+              <p className="text-gray-600 text-center leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
