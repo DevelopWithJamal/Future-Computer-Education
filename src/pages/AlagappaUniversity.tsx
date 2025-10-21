@@ -1,31 +1,18 @@
-import { Briefcase } from 'lucide-react';
- 
-import AlagappaLogo from '../assets/alagappa-logo.png';
-
-// Import course images
-import BA_Tamil from '../assets/courses/BA_Tamil.jpg';
-import BA_English from '../assets/courses/BA_English.jpg';
-import BSc_Math from '../assets/courses/BSc_Math.jpg';
-import BSc_Computer from '../assets/courses/BSc_Computer.jpg';
-import BCom_Computer from '../assets/courses/BCom_Computer.jpg';
-import BBA from '../assets/courses/BBA.jpg';
-import BCom from '../assets/courses/BCom.jpg';
- 
+import { Briefcase, Book, Cpu, Globe, Code, Users, Palette, Calculator, Laptop } from 'lucide-react';
 import Contact from '../components/Contact';
 
-// Similarly import PG, Diploma, Certificate images
-
+// UG Courses
 const ugCourses = [
-  { title: 'B.A (TAMIL)', image: BA_Tamil },
-  { title: 'B.A (ENGLISH)', image: BA_English },
-  { title: 'B.SC (MATHEMATICS)', image: BSc_Math },
-  { title: 'B.SC (COMPUTER SCIENCE)', image: BSc_Computer },
-  { title: 'B.COM (COMPUTER APPLICATION)', image: BCom_Computer },
-  { title: 'B.B.A', image: BBA },
-  { title: 'B.COM', image: BCom },
+  { title: 'B.A (TAMIL)', icon: Book },
+  { title: 'B.A (ENGLISH)', icon: Book },
+  { title: 'B.SC (MATHEMATICS)', icon: Cpu },
+  { title: 'B.SC (COMPUTER SCIENCE)', icon: Code },
+  { title: 'B.COM (COMPUTER APPLICATION)', icon: Cpu },
+  { title: 'B.B.A', icon: Briefcase },
+  { title: 'B.COM', icon: Briefcase },
 ];
 
-// Add PG, Diploma, Certificate arrays similarly
+// MBA Specializations
 const mbaSpecializations = [
   'Human Resource Management',
   'Marketing Management',
@@ -45,6 +32,26 @@ const mbaSpecializations = [
   'Co-Operative Management',
 ];
 
+// Diploma Courses
+const diplomaCourses = [
+  { title: 'AI & Machine Learning', icon: Cpu },
+  { title: 'Computer Applications', icon: Code },
+  { title: 'Cyber Security', icon: Globe },
+  { title: 'Montessori Education', icon: Users },
+];
+
+// Certificate Courses
+const certificateCourses = [
+  { title: 'Astrology (Tamil Medium)', icon: Globe },
+  { title: 'C Programming', icon: Code },
+  { title: 'Computer Fundamentals', icon: Laptop },
+  { title: 'Gender Studies', icon: Users },
+  { title: 'GST', icon: Calculator },
+  { title: 'Library and Information Science (LIS)', icon: Book },
+  { title: 'Office Automation', icon: Briefcase },
+  { title: 'Web Designing', icon: Palette },
+];
+
 export default function AlagappaUniversity() {
   return (
     <section
@@ -52,13 +59,6 @@ export default function AlagappaUniversity() {
       className="w-full pt-32 md:pt-40 bg-gradient-to-b from-white to-blue-50"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 text-center">
-
-        {/* Logos */}
-        <div className="flex  justify-center items-center gap-6 mb-6">
-         
-          <img src={AlagappaLogo} alt="Alagappa University" className="w-[400px]" />
-        </div>
-
         {/* Header */}
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
           Alagappa University - Distance and Online Admission Centre
@@ -76,16 +76,10 @@ export default function AlagappaUniversity() {
           {ugCourses.map((course) => (
             <div
               key={course.title}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center"
             >
-              <img
-                src={course.image}
-                alt={course.title}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold text-lg">{course.title}</h3>
-              </div>
+              <course.icon size={36} className="text-blue-600 mb-4" />
+              <h3 className="font-semibold text-lg">{course.title}</h3>
             </div>
           ))}
         </div>
@@ -96,10 +90,38 @@ export default function AlagappaUniversity() {
           {mbaSpecializations.map((spec) => (
             <div
               key={spec}
-              className="bg-white rounded-2xl shadow-lg p-4 hover:shadow-2xl transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-lg p-4 hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center"
             >
               <Briefcase size={24} className="text-blue-600 mb-2" />
               <h3 className="font-semibold text-lg">{spec}</h3>
+            </div>
+          ))}
+        </div>
+
+        {/* Diploma Courses */}
+        <h2 className="text-3xl font-bold mb-6 text-blue-900">Diploma Courses</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+          {diplomaCourses.map((course) => (
+            <div
+              key={course.title}
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center"
+            >
+              <course.icon size={36} className="text-green-600 mb-4" />
+              <h3 className="font-semibold text-lg">{course.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        {/* Certificate Courses */}
+        <h2 className="text-3xl font-bold mb-6 text-blue-900">Certificate Courses</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+          {certificateCourses.map((course) => (
+            <div
+              key={course.title}
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center"
+            >
+              <course.icon size={36} className="text-purple-600 mb-4" />
+              <h3 className="font-semibold text-lg">{course.title}</h3>
             </div>
           ))}
         </div>
@@ -111,12 +133,9 @@ export default function AlagappaUniversity() {
         <p className="text-slate-700 mb-6">
           Neela Mela Vadam Pokki Street, (Near Devi Theatre - Professional Courier Upstairs)
         </p>
-
-        {/* Contact Section */}
-        
       </div>
-       <Contact></Contact> 
+
+      <Contact />
     </section>
-   
   );
 }

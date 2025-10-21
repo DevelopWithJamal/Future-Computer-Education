@@ -1,6 +1,7 @@
 import { Code, Brain, Database, Cpu, Globe, Smartphone, ShoppingBasket } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { ImageAutoSlider } from './ImageAutoSlider';
+import BasicCourses from './BasicCourses';
 
 export default function Courses() {
   const [isVisible, setIsVisible] = useState(false);
@@ -135,7 +136,8 @@ export default function Courses() {
   ];
 
   return (
-    <section id="courses" className="py-20 bg-gray-50 relative overflow-hidden">
+    <>
+     <section id="courses" className="py-20 bg-gray-50 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2
@@ -195,6 +197,7 @@ export default function Courses() {
           ))}
         </div>
       </div>
+      <BasicCourses></BasicCourses>
 
       {/* Courses Image Slider */}
       <section className="py-20 bg-gray-50">
@@ -202,5 +205,7 @@ export default function Courses() {
         <ImageAutoSlider />
       </section>
     </section>
+    </>
+   
   );
 }

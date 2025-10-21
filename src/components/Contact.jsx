@@ -31,7 +31,7 @@ export default function Contact() {
               {
                 icon: <Mail size={24} className="text-white" />,
                 title: 'Email Us',
-                info: 'futurecomputereducationnagai@gmail.co',
+                info: 'futurecomputereducationnagai@gmail.com',
                 bg: 'bg-gray-900',
               },
               {
