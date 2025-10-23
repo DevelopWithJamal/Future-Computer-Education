@@ -2,11 +2,11 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-interface NavigationProps {
+interface SkillsNavigationProps {
   scrolled: boolean;
 }
 
-export default function Navigation({ scrolled }: NavigationProps) {
+export default function SkillsAndPartners({ scrolled }: SkillsNavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('home');
   const navigate = useNavigate();

@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import Hero from './components/Hero';
 import About from './components/About';
  
 import Courses from './components/Courses';
 import Gallery from './components/Gallery';
 import RobotShowcase from './components/RobotShowcase';
 import Founder from './components/Founder';
+// @ts-ignore
 import Contact from './components/Contact';
 import FloatingButtons from './components/FloatingButtons';
 import AlagappaUniversity from './pages/AlagappaUniversity';
 import SkillsAndPartners from './components/SkillsAndPartners';
+import SplineDemo from './components/SplineDemo';
+import Hero from './components/Hero';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,12 +34,13 @@ function App() {
           path="/"
           element={
             <>
-              <Hero />
-              
+            <Hero></Hero>
+              <SplineDemo />
               <About />
               <Founder />
-              <SkillsAndPartners /> 
-       
+              <SkillsAndPartners scrolled={scrolled} /> 
+             
+          
               <Courses /> 
               <Gallery />
               <RobotShowcase />
