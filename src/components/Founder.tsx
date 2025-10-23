@@ -1,5 +1,8 @@
+'use client'
+
 import { Quote, Award, Target, Heart } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import SplineDemo from './SplineDemo';
 
 export default function Founder() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +28,7 @@ export default function Founder() {
   return (
     <section
       id="founder"
-      className="py-20 bg-gray-900 relative overflow-hidden"
+      className="pt-20 bg-gray-900 relative overflow-hidden" // removed bottom padding
     >
       {/* Background circles for subtle depth */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -36,9 +39,7 @@ export default function Founder() {
         <div className="text-center mb-16">
           <h2
             className={`text-4xl md:text-5xl font-extrabold mb-4 transition-all duration-1000 tracking-wide ${
-              isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             } text-white`}
           >
             Meet Our{' '}
@@ -54,9 +55,7 @@ export default function Founder() {
         <div className="max-w-5xl mx-auto">
           <div
             className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 delay-300 ${
-              isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
             {/* Founder Card */}
@@ -133,7 +132,9 @@ export default function Founder() {
             </div>
           </div>
         </div>
+              <SplineDemo />
       </div>
+
     </section>
   );
 }

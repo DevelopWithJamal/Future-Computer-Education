@@ -5,6 +5,7 @@ import BasicCourses from './BasicCourses';
 
 export default function Courses() {
   const [isVisible, setIsVisible] = useState(false);
+  const whatsappNumber = '+919994707665'; // Updated number
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -15,7 +16,7 @@ export default function Courses() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05 } // lower threshold for mobile
     );
 
     const section = document.getElementById('courses');
@@ -24,12 +25,16 @@ export default function Courses() {
     return () => observer.disconnect();
   }, []);
 
+  const handleWhatsApp = (course: string) => {
+    const message = encodeURIComponent(`Hello, I am interested in the "${course}" course.`);
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+  };
+
   const courses = [
     {
       icon: Code,
       title: 'Python Programming',
-      description:
-        'Learn Python from basics to advanced concepts, including data structures, OOP, and libraries like NumPy and Pandas.',
+      description: 'Learn Python from basics to advanced concepts, including data structures, OOP, and libraries like NumPy and Pandas.',
       duration: '3 months',
       level: 'Beginner to Advanced',
       color: 'bg-green-500',
@@ -37,8 +42,7 @@ export default function Courses() {
     {
       icon: Code,
       title: 'Java Programming',
-      description:
-        'Master Java fundamentals, object-oriented programming, and build scalable applications.',
+      description: 'Master Java fundamentals, object-oriented programming, and build scalable applications.',
       duration: '3 months',
       level: 'Beginner to Advanced',
       color: 'bg-orange-500',
@@ -46,8 +50,7 @@ export default function Courses() {
     {
       icon: Code,
       title: 'C++ Programming',
-      description:
-        'Develop problem-solving and system-level programming skills using C++.',
+      description: 'Develop problem-solving and system-level programming skills using C++.',
       duration: '3 months',
       level: 'Beginner to Advanced',
       color: 'bg-blue-500',
@@ -55,8 +58,7 @@ export default function Courses() {
     {
       icon: Brain,
       title: 'AI & Generative AI',
-      description:
-        'Explore artificial intelligence, machine learning, deep learning, and generative AI models to create intelligent solutions.',
+      description: 'Explore artificial intelligence, machine learning, deep learning, and generative AI models to create intelligent solutions.',
       duration: '4 months',
       level: 'Intermediate',
       color: 'bg-purple-500',
@@ -64,8 +66,7 @@ export default function Courses() {
     {
       icon: Database,
       title: 'SQL & Databases',
-      description:
-        'Learn SQL, database design, queries, and data management for applications and analytics.',
+      description: 'Learn SQL, database design, queries, and data management for applications and analytics.',
       duration: '2 months',
       level: 'Beginner to Advanced',
       color: 'bg-yellow-500',
@@ -73,8 +74,7 @@ export default function Courses() {
     {
       icon: Brain,
       title: 'Data Science & Analytics',
-      description:
-        'Perform data analysis, visualization, and predictive modeling using Python, R, and tools like Power BI.',
+      description: 'Perform data analysis, visualization, and predictive modeling using Python, R, and tools like Power BI.',
       duration: '4 months',
       level: 'Intermediate',
       color: 'bg-teal-500',
@@ -82,8 +82,7 @@ export default function Courses() {
     {
       icon: Globe,
       title: 'Full Stack Development',
-      description:
-        'Become a complete developer with frontend, backend, databases, and deployment skills.',
+      description: 'Become a complete developer with frontend, backend, databases, and deployment skills.',
       duration: '4 months',
       level: 'Advanced',
       color: 'bg-blue-400',
@@ -91,8 +90,7 @@ export default function Courses() {
     {
       icon: Smartphone,
       title: 'Mobile App Development',
-      description:
-        'Create native and cross-platform mobile applications for Android and iOS using modern frameworks.',
+      description: 'Create native and cross-platform mobile applications for Android and iOS using modern frameworks.',
       duration: '3 months',
       level: 'Intermediate',
       color: 'bg-pink-500',
@@ -100,8 +98,7 @@ export default function Courses() {
     {
       icon: Cpu,
       title: 'Robotics & IoT',
-      description:
-        'Build robots, program microcontrollers, work with sensors, and create IoT solutions.',
+      description: 'Build robots, program microcontrollers, work with sensors, and create IoT solutions.',
       duration: '3 months',
       level: 'Beginner to Advanced',
       color: 'bg-red-500',
@@ -109,8 +106,7 @@ export default function Courses() {
     {
       icon: Database,
       title: 'Power BI',
-      description:
-        'Learn to create interactive dashboards, reports, and visual insights using Power BI.',
+      description: 'Learn to create interactive dashboards, reports, and visual insights using Power BI.',
       duration: '3 months',
       level: 'Intermediate',
       color: 'bg-indigo-500',
@@ -118,8 +114,7 @@ export default function Courses() {
     {
       icon: ShoppingBasket,
       title: 'E-Commerce & Digital Skills',
-      description:
-        'Learn to build e-commerce websites, integrate payment gateways, and optimize online business solutions.',
+      description: 'Learn to build e-commerce websites, integrate payment gateways, and optimize online business solutions.',
       duration: '3 months',
       level: 'Intermediate',
       color: 'bg-yellow-600',
@@ -127,8 +122,7 @@ export default function Courses() {
     {
       icon: Code,
       title: 'CAD & Computer Design',
-      description:
-        'Master Computer-Aided Design tools and create professional mechanical, electrical, and architectural designs.',
+      description: 'Master Computer-Aided Design tools and create professional mechanical, electrical, and architectural designs.',
       duration: '3 months',
       level: 'Intermediate',
       color: 'bg-cyan-500',
@@ -136,9 +130,9 @@ export default function Courses() {
   ];
 
   return (
-    <>
-     <section id="courses" className="py-20 bg-gray-50 relative overflow-hidden">
+    <section id="courses" className="py-20 bg-gray-50 relative">
       <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <h2
             className={`text-4xl md:text-5xl font-bold mb-4 transition-all duration-1000 ${
@@ -156,7 +150,8 @@ export default function Courses() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Courses Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => (
             <div
               key={index}
@@ -189,15 +184,20 @@ export default function Courses() {
                   </span>
                 </div>
 
-                <button className="w-full py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all duration-300">
-                  Learn More
+                <button
+                  onClick={() => handleWhatsApp(course.title)}
+                  className="w-full py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all duration-300"
+                >
+                  Enquire on WhatsApp
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <BasicCourses></BasicCourses>
+
+      {/* Basic Courses */}
+  <BasicCourses></BasicCourses>
 
       {/* Courses Image Slider */}
       <section className="py-20 bg-gray-50">
@@ -205,7 +205,5 @@ export default function Courses() {
         <ImageAutoSlider />
       </section>
     </section>
-    </>
-   
   );
 }
