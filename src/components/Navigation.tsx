@@ -2,7 +2,7 @@ import { Menu, X, Globe, MessageCircle, ChevronDown, ChevronUp, Cpu } from 'luci
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
-// --- 1. NEW STRUCTURED MENU DATA WITH SEPARATE ROUTES ---
+// --- 1. STRUCTURED MENU DATA ---
 const structuredMenu = [
     { name: 'Home', path: '/', sectionId: 'home', type: 'single' as const },
     { 
@@ -284,7 +284,6 @@ export default function Navigation() {
                         {structuredMenu.map((item) => (
                             <div key={item.name}>
                                 {item.type === 'single' ? (
-                                    // Mobile Single Link
                                     <a
                                         href={item.path} 
                                         onClick={(e) => { e.preventDefault(); handleLinkClick(item.path, item.sectionId); }}
@@ -297,7 +296,6 @@ export default function Navigation() {
                                         {item.name}
                                     </a>
                                 ) : (
-                                    // Mobile Dropdown Group (Click-to-open)
                                     <>
                                         <button
                                             onClick={() => toggleMobileDropdown(item.name)}

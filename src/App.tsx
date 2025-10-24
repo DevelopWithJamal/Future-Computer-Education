@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import About from './components/About';
 
-import Courses from './components/Courses';
-import Gallery from './components/Gallery';
-import RobotShowcase from './components/RobotShowcase';
+// COMPONENTS THAT REMAIN ON HOMEPAGE (Scroll Anchors)
+import Hero from './components/Hero';
+import About from './components/About';
 import Founder from './components/Founder';
+import SkillTraining from './components/SkillTraining';
+import Partners from './components/Partners';
+import RobotShowcase from './components/RobotShowcase';
+import Courses from './components/Courses'; 
+
+// COMPONENTS FOR DEDICATED ROUTES
+import Gallery from './components/Gallery';
 // @ts-ignore
 import Contact from './components/Contact';
-import FloatingButtons from './components/FloatingButtons';
 import AlagappaUniversity from './pages/AlagappaUniversity';
-import SkillsAndPartners from './components/SkillTraining';
-import SplineDemo from './components/SplineDemo';
-import Hero from './components/Hero';
-import Partners from './components/Partners';
-import SkillTraining from './components/SkillTraining';
+import FloatingButtons from './components/FloatingButtons';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,34 +28,45 @@ function App() {
   }, []);
 
   return (
-
     <Router>
-      <Navigation scrolled={scrolled} />
+      <Navigation /> 
+      
       <Routes>
-        {/* Home page */}
+        
+        {/* =======================================================
+           1. HOMEPAGE ROUTE (Scroll-Anchored Sections)
+           ======================================================= */}
         <Route
           path="/"
           element={
             <>
-              <Hero></Hero>
-                      <About /> 
-               <Founder />
-           
-              <SkillTraining></SkillTraining>
-              <Partners></Partners>
-              <Courses />
-          
-              <Gallery />
-              <RobotShowcase />
-
-              <Contact />
-              <FloatingButtons />
+              {/* These sections are loaded on the homepage and navigated via scroll anchors */}
+              <Hero />             
+              <About />            
+              <Founder />          
+              <SkillTraining />    
+              <Partners />         
+              <Courses />          
+              <RobotShowcase />    
+              
+              <FloatingButtons /> 
             </>
           }
         />
 
-        {/* Alagappa University page */}
-        <Route path="/alagappa" element={<AlagappaUniversity />} />
+        {/* =======================================================
+           2. DEDICATED PAGE ROUTES
+           ======================================================= */}
+        
+        {/* Alagappa University (Confirmed working) */}
+        <Route path="/alagappa" element={<><AlagappaUniversity /><FloatingButtons /></>} />
+
+        {/* GALLERY PAGE (Now correctly routing and rendering content) */}
+        <Route path="/gallery" element={<><Gallery /><FloatingButtons /></>} />
+        
+        {/* Contact Page */}
+        <Route path="/contact" element={<><Contact /><FloatingButtons /></>} />
+
       </Routes>
     </Router>
   );

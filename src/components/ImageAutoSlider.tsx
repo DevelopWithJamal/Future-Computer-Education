@@ -7,18 +7,18 @@ export const ImageAutoSlider = () => {
   const duplicatedImages = [...images, ...images];
 
   return (
-    <div className="w-full overflow-hidden relative flex items-center justify-center py-8">
-      <div className="mask-gradient w-full max-w-6xl">
+    <div className="w-full   overflow-hidden relative flex items-center justify-center py-8">
+      <div className="mask-gradient w-full max-w-6xl ">
         <div className="flex animate-scroll gap-6">
           {duplicatedImages.map((img, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-xl overflow-hidden shadow-2xl"
+              className="flex-shrink-0 w-48 h-48 md:w-64 md:h-44 lg:w-80 lg:h-50 rounded- overflow-hidden shadow-2xl"
             >
               <img
                 src={img}
                 alt={`Gallery ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
                 loading="lazy"
               />
             </div>

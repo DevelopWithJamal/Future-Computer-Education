@@ -199,11 +199,8 @@ export default function Courses() {
       {/* Basic Courses */}
   <BasicCourses></BasicCourses>
 
-      {/* Courses Image Slider */}
-      <section className="py-20 bg-gray-50">
-        <h2 className="text-4xl font-bold text-center mb-12">Our Courses Gallery</h2>
-        <ImageAutoSlider />
-      </section>
+
+    
     </section>
   );
 }
