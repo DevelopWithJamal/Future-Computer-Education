@@ -1,162 +1,192 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe, MessageCircle } from 'lucide-react';
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
-// It's good practice to define the navigation links outside the component
-// if they don't depend on component props or state.
 const navLinks = [
-  { name: 'Home', path: '/', sectionId: 'home' },
-  { name: 'About', path: '/', sectionId: 'about' },
-  { name: 'Courses', path: '/', sectionId: 'courses' },
-  { name: 'Skill Training', path: '/', sectionId: 'skills' },
-  { name: 'Partners', path: '/', sectionId: 'partners' },
-  { name: 'Alagappa', path: '/alagappa', sectionId: null },
-  { name: 'Gallery', path: '/', sectionId: 'gallery' },
-  { name: 'Robots', path: '/', sectionId: 'robots' },
-  { name: 'Founder', path: '/', sectionId: 'founder' },
-  { name: 'Contact', path: '/', sectionId: 'contact' },
+  { name: 'Home', path: '/', sectionId: 'home' },
+  { name: 'About', path: '/', sectionId: 'about' },
+  { name: 'Courses', path: '/', sectionId: 'courses' },
+  { name: 'Skill Training', path: '/', sectionId: 'skills' },
+  { name: 'Partners', path: '/', sectionId: 'partners' },
+  { name: 'Alagappa', path: '/alagappa', sectionId: null },
+  { name: 'Gallery', path: '/', sectionId: 'gallery' },
+  { name: 'Robots', path: '/', sectionId: 'robots' },
+  { name: 'Founder', path: '/', sectionId: 'founder' },
+  { name: 'Contact', path: '/', sectionId: 'contact' },
 ];
 
+// 🚀 Export the Main Navigation Wrapper 🚀
 export default function Navigation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  // Type is updated to allow null, matching navLinks
-  const [activeSection, setActiveSection] = useState<string | null>('home');
-  const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>('home');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const whatsappNumber = '+919363706033'; 
+  
+  // Define a constant for the fixed header height for consistent padding
+  const HEADER_HEIGHT_CLASS = 'h-20'; // Using h-20 (5rem) for a standard header height
+  const HEADER_HEIGHT_PX = 80;
 
-  // Helper function for scrolling to avoid repetition (DRY principle)
-  const scrollToSection = useCallback((sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const offset = 70; // Height of the navbar
-      const top = section.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  }, []);
+  const scrollToSection = useCallback((sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      // Offset adjusted for the fixed header height
+      const offset = HEADER_HEIGHT_PX; 
+      const top = section.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, []);
 
-  // Main click handler for navigation items
-  const handleClick = (path: string, sectionId: string | null) => {
-    setMobileMenuOpen(false);
+  const handleClick = (path: string, sectionId: string | null) => {
+    setMobileMenuOpen(false);
 
-    // If we are not on the page of the link, navigate first
-    if (path !== location.pathname) {
-      navigate(path);
-      // If there's a sectionId, we need to wait for the new page
-      // to render before we can scroll.
-      if (sectionId) {
-        setTimeout(() => scrollToSection(sectionId), 100);
-      }
-    } else if (sectionId) {
-      // If we are already on the right page, just scroll.
-      scrollToSection(sectionId);
-    }
-  };
+    if (path !== location.pathname) {
+      navigate(path);
+      if (sectionId) {
+        setTimeout(() => scrollToSection(sectionId), 100);
+      }
+    } else if (sectionId) {
+      scrollToSection(sectionId);
+    }
+  };
 
-  // Effect to lock body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
-    // Cleanup function to restore scroll on component unmount
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [mobileMenuOpen]);
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'auto';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen]);
 
-  // Effect for scroll-based UI changes (navbar style and active link)
-  useEffect(() => {
-    const handleScroll = () => {
-      // 1. Handle navbar background change
-      setScrolled(window.scrollY > 50);
+  useEffect(() => {
+    const handleScroll = () => {
+      let currentSection: string | null = null;
+      const scrollOffset = HEADER_HEIGHT_PX; 
 
-      // 2. Determine the active section
-      let currentSection: string | null = null;
-      // Iterate backwards to find the last section that has been scrolled past
-      for (let i = navLinks.length - 1; i >= 0; i--) {
-        const link = navLinks[i];
-        if (link.sectionId) {
-          const section = document.getElementById(link.sectionId);
-          if (section && section.offsetTop - 80 <= window.scrollY) {
-            currentSection = link.sectionId;
-            break; // Exit loop once the top-most visible section is found
-          }
-        }
-      }
-      setActiveSection(currentSection);
-    };
+      for (let i = navLinks.length - 1; i >= 0; i--) {
+        const link = navLinks[i];
+        if (link.sectionId) {
+          const section = document.getElementById(link.sectionId);
+          if (section && section.offsetTop - scrollOffset <= window.scrollY) { 
+            currentSection = link.sectionId;
+            break;
+          }
+        }
+      }
+      if (window.scrollY < 50) currentSection = 'home';
+      setActiveSection(currentSection);
+    };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []); // Empty dependency array means this runs once on mount
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white shadow-sm border-b border-gray-200'
-          : 'bg-white/90 backdrop-blur-sm'
-      }`}
-    >
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" onClick={() => handleClick('/', 'home')} className="flex items-center space-x-2">
-          <span className="flex justify-center gap-2 items-center text-xl font-bold text-blue-900 tracking-tight">
-             Future Computer Education
-          </span>
-        </Link>
+  return (
+    <>
+      {/* 🌟 Fixed Header Container (Light Theme) 🌟 */}
+      <header 
+        className="fixed top-0 left-0 w-full z-50 
+          bg-white/95 backdrop-blur-md 
+          shadow-lg border-b border-gray-100/50 transition-all duration-300"
+      >
+        <div className={`container mx-auto px-4 sm:px-6 ${HEADER_HEIGHT_CLASS} flex items-center justify-between`}>
+          
+          {/* Brand Name (Light Theme Text) */}
+          <Link 
+            to="/" 
+            onClick={() => handleClick('/', 'home')}
+            className="flex items-center space-x-2 shrink-0 py-2 group"
+            aria-label="Home"
+          >
+            <Globe size={24} className="text-blue-600 group-hover:text-blue-500 transition-colors" /> 
+            <span className="text-xl font-bold text-gray-900 whitespace-nowrap">
+              Future Computer Education
+            </span>
+          </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-6">
-          {navLinks.map((link) => (
-            // FIX: Use <a> tags for navigation for accessibility and SEO
-            <a
-              key={link.name}
-              href={link.path} // Provide a valid href
-              onClick={(e) => {
-                e.preventDefault(); // Prevent default link behavior
-                handleClick(link.path, link.sectionId);
-              }}
-              className={`text-slate-700 transition-colors duration-300 relative group font-medium cursor-pointer ${
-                activeSection === link.sectionId ? 'text-blue-600' : ''
-              }`}
-            >
-              {link.name}
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${
-                  activeSection === link.sectionId ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
-            </a>
-          ))}
-        </div>
+          {/* DESKTOP: Navigation Links (Light Theme Colors) */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <div className="flex items-center space-x-6"> 
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.path === '/' && link.sectionId ? `#${link.sectionId}` : link.path} 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleClick(link.path, link.sectionId);
+                  }}
+                  className={`text-base font-medium py-1 transition-colors duration-300 relative cursor-pointer
+                    ${
+                      activeSection === link.sectionId
+                        ? 'text-blue-600 font-semibold'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-slate-900"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle mobile menu"
-        >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+            {/* WhatsApp CTA (Retained colors, updated shadow for light mode) */}
+            <a
+              href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 text-white font-medium py-2 px-4 rounded-full text-sm hover:bg-green-600 transition-colors duration-200 shadow-lg shadow-green-500/20 flex items-center space-x-1 shrink-0 ml-4"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <MessageCircle size={18} />
+              <span className='hidden lg:inline'>WhatsApp</span>
+            </a>
+          </nav>
+          
+          {/* MOBILE: Toggle Button (Retained high-contrast blue) */}
+          <button
+            className="md:hidden p-2 bg-blue-600 text-white rounded-full shadow-lg shrink-0 hover:bg-blue-700 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </header>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-2 bg-white border-t border-gray-200 animate-fade-in h-screen overflow-y-auto">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.path}
-              onClick={(e) => {
-                e.preventDefault();
-                handleClick(link.path, link.sectionId);
-              }}
-              className={`block py-3 w-full text-left font-medium transition-colors duration-300 ${
-                activeSection === link.sectionId ? 'text-blue-600' : 'text-gray-700'
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-      )}
-    </nav>
-  );
+      {/* 🚀 Spacer for Content Below Fixed Header 🚀 */}
+      <div className={`block ${HEADER_HEIGHT_CLASS}`}></div> 
+
+      {/* MOBILE MENU: Full-Screen Overlay (Light Theme) */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-white/95 backdrop-blur-md flex flex-col pt-20 overflow-y-auto">
+          <div className="container mx-auto px-6 space-y-2 pb-10 pt-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.path === '/' && link.sectionId ? `#${link.sectionId}` : link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleClick(link.path, link.sectionId);
+                }}
+                // Inverted mobile link colors for light background
+                className={`block py-3 text-xl w-full text-center font-bold transition-colors duration-300 rounded-lg ${
+                  activeSection === link.sectionId ? 'text-blue-600 bg-blue-100/70' : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-8 py-3 w-full text-center font-semibold bg-green-500 text-white rounded-full text-lg hover:bg-green-600 transition-colors shadow-xl shadow-green-500/30"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <MessageCircle size={20} className="inline mr-2" />
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }

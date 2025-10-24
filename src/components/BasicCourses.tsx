@@ -18,26 +18,11 @@ import {
   PenTool,
   UserCog,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+
+// NOTE: Removed useState and useEffect (Intersection Observer) for guaranteed visibility
 
 export default function BasicCourses() {
-  const [isVisible, setIsVisible] = useState(false);
   const whatsappNumber = "+919994707665"; // your WhatsApp number
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setIsVisible(true);
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    const section = document.getElementById("basic-courses");
-    if (section) observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   const handleWhatsAppClick = (courseName: string) => {
     const url = `https://wa.me/${whatsappNumber}?text=Hi,%20I%20am%20interested%20in%20the%20${encodeURIComponent(
@@ -68,38 +53,33 @@ export default function BasicCourses() {
   ];
 
   return (
-    <section id="basic-courses" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center">
-        <h2
-          className={`text-4xl md:text-5xl font-bold mb-6 text-gray-900 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+    // Ensured generous mobile padding (px-4)
+    <section id="basic-courses" className="py-12 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 text-center">
+        {/* Removed all isVisible animation classes */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-900">
           Basic <span className="text-blue-600">Computer Courses</span>
         </h2>
-        <p
-          className={`text-lg text-gray-600 mb-12 max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
+        
+        {/* Removed all isVisible animation classes */}
+        <p className="text-base sm:text-lg text-gray-600 mb-10 sm:mb-12 max-w-2xl mx-auto">
           Start from zero and become digitally skilled with practical computer, design, and internet training.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Explicitly set grid-cols-1 for mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {courses.map((course, index) => (
             <div
               key={index}
-              className={`bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-500 hover:scale-105 cursor-pointer ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 50}ms` }}
+              // Removed isVisible classes and transitionDelay
+              className="bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer"
               onClick={() => handleWhatsAppClick(course.title)}
             >
               <div className="w-16 h-16 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-4 mx-auto">
                 <course.icon size={32} />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{course.title}</h3>
-              <p className="text-gray-600 mb-4">{course.description}</p>
+              <p className="text-gray-600 mb-4 text-sm sm:text-base">{course.description}</p>
               <div className="flex justify-center gap-2 text-sm text-gray-700 mb-4">
                 <span className="px-3 py-1 bg-gray-100 rounded-full">{course.duration}</span>
                 <span className="px-3 py-1 bg-gray-100 rounded-full">{course.level}</span>
@@ -109,7 +89,7 @@ export default function BasicCourses() {
                   e.stopPropagation();
                   handleWhatsAppClick(course.title);
                 }}
-                className="px-6 py-2 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition"
+                className="px-6 py-2 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition text-sm sm:text-base"
               >
                 Enquire on WhatsApp
               </button>
@@ -120,4 +100,3 @@ export default function BasicCourses() {
     </section>
   );
 }
-  
