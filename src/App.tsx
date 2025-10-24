@@ -50,6 +50,8 @@ function App() {
               <RobotShowcase />    
               
               <FloatingButtons /> 
+              <Gallery></Gallery>
+              <Contact></Contact>
             </>
           }
         />
