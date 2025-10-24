@@ -5,19 +5,26 @@ import heroVideo from '../video/hero.mp4';
 export default function Hero() {
   const whatsappNumber = '+919363706033';
 
+  // Calculate the height: 100vh minus the fixed header height (80px)
+  const heroHeightStyle = {
+    minHeight: 'calc(100vh - 80px)',
+  };
+
   return (
     <section
       id="home"
       // 1. MODERN LIGHT BACKGROUND
-      className="w-full pt-32 md:pt-28 bg-gradient-to-br from-white via-blue-50 to-white overflow-hidden min-h-screen flex items-center"
+      className="w-full bg-gradient-to-br from-white via-blue-50 to-white overflow-hidden flex items-center"
+      style={heroHeightStyle} // Apply the calculated height here
     >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 md:px-10 pb-20 pt-8 md:pb-32">
+      {/* Container ensures proper max-width and internal spacing */}
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 md:px-10 py-16 md:py-0 w-full">
         
         {/* Content Section (Order 1 on Desktop) */}
         <div className="flex-1 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
           
           {/* Tagline */}
-          <div className="inline-flex mb-6 items-center space-x-2 px-5 py-2 bg-blue-100 border border-blue-300 rounded-full text-blue-700 text-sm font-medium mx-auto md:mx-0 shadow-md">
+          <div className="inline-flex mb-6 items-center space-x-2 px-5 py-2 bg-blue-100 border border-blue-300 rounded-lg text-blue-700 text-sm font-medium mx-auto md:mx-0 shadow-md">
             <Sparkles size={16} />
             <span>IT & Robotics Training for the Future</span>
           </div>
