@@ -100,7 +100,7 @@ export default function Navigation() {
         {/* Logo */}
         <Link to="/" onClick={() => handleClick('/', 'home')} className="flex items-center space-x-2">
           <span className="flex justify-center gap-2 items-center text-xl font-bold text-blue-900 tracking-tight">
-            <h1 className="text-4xl text-red-600">FUTURE</h1> COMPUTER EDUCATION
+             Future Computer Education
           </span>
         </Link>
 
