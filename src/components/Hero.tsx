@@ -1,26 +1,31 @@
-import { Link } from 'react-router-dom';
 import { ChevronRight, Sparkles, MessageCircle, TrendingUp } from 'lucide-react';
 import heroVideo from '../video/hero.mp4';
 
 export default function Hero() {
   const whatsappNumber = '+919363706033';
 
-  // Calculate the height: 100vh minus the fixed header height (80px)
+  // Calculate height: full screen minus header
   const heroHeightStyle = {
     minHeight: 'calc(100vh - 80px)',
+  };
+
+  // Smooth scroll to the "Courses" section
+  const handleScrollToCourses = () => {
+    const section = document.getElementById('courses');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <section
       id="home"
-      // 1. MODERN LIGHT BACKGROUND
       className="w-full bg-gradient-to-br from-white via-blue-50 to-white overflow-hidden flex items-center"
-      style={heroHeightStyle} // Apply the calculated height here
+      style={heroHeightStyle}
     >
-      {/* Container ensures proper max-width and internal spacing */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 px-6 md:px-10 py-16 md:py-0 w-full">
         
-        {/* Content Section (Order 1 on Desktop) */}
+        {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center text-center md:text-left order-2 md:order-1">
           
           {/* Tagline */}
@@ -41,9 +46,9 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-10">
-            {/* Primary CTA: Explore Courses */}
-            <Link
-              to="/courses"
+            {/* Scroll to Courses */}
+            <button
+              onClick={handleScrollToCourses}
               className="group px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold text-lg flex items-center justify-center space-x-2 
                          hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-300 transition-all duration-300 transform hover:-translate-y-0.5"
             >
@@ -52,9 +57,9 @@ export default function Hero() {
                 size={20}
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
-            </Link>
+            </button>
 
-            {/* Secondary CTA: WhatsApp */}
+            {/* WhatsApp Contact */}
             <a
               href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
               target="_blank"
@@ -63,8 +68,8 @@ export default function Hero() {
                          hover:bg-green-50 transition-all duration-300 hover:shadow-md"
             >
               <MessageCircle size={20} className="mr-2" />
-              <span className='hidden sm:inline'>Message Us Now</span>
-              <span className='inline sm:hidden'>Contact</span>
+              <span className="hidden sm:inline">Message Us Now</span>
+              <span className="inline sm:hidden">Contact</span>
             </a>
           </div>
 
@@ -78,15 +83,15 @@ export default function Hero() {
               <div key={stat.label} className="text-center md:text-left flex items-center space-x-3">
                 <TrendingUp size={24} className="text-green-600/80 hidden sm:block" />
                 <div>
-                    <div className="text-3xl font-extrabold text-gray-900">{stat.value}</div>
-                    <div className="text-blue-700 mt-0.5 font-medium text-sm">{stat.label}</div>
+                  <div className="text-3xl font-extrabold text-gray-900">{stat.value}</div>
+                  <div className="text-blue-700 mt-0.5 font-medium text-sm">{stat.label}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Video Section (Order 2 on Desktop) */}
+        {/* Video Section */}
         <div className="flex-1 flex items-center justify-center mt-10 md:mt-0 order-1 md:order-2">
           <div className="relative w-full max-w-xl aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-blue-300/60 border border-blue-100">
             <video
