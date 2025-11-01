@@ -48,7 +48,8 @@ export default function RobotShowcase() {
   }, [robots.length]);
 
   return (
-    <section id="robots" className="py-20 bg-white relative overflow-hidden">
+   <>
+     <section id="robots" className="py-20 bg-white relative overflow-hidden">
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
@@ -133,5 +134,7 @@ export default function RobotShowcase() {
         </div>
       </div>
     </section>
+    
+   </>
   );
 }

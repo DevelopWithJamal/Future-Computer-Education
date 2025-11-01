@@ -48,10 +48,10 @@ function App() {
               <Partners />         
               <Courses />          
               <RobotShowcase />    
-              
               <FloatingButtons /> 
               <Gallery></Gallery>
               <Contact></Contact>
+              
             </>
           }
         />

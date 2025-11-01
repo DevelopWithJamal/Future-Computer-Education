@@ -1,5 +1,8 @@
 import { ChevronRight, Sparkles, MessageCircle, TrendingUp } from 'lucide-react';
 import heroVideo from '../video/hero.mp4';
+import TnkskillCourse from './TnkskillCourse';
+import CourseSyllabus from './CourseSyllabus';
+import Gloriya from './Gloriya';
 
 export default function Hero() {
   const whatsappNumber = '+919363706033';
@@ -18,6 +21,7 @@ export default function Hero() {
   };
 
   return (
+    <>
     <section
       id="home"
       className="w-full bg-gradient-to-br from-white via-blue-50 to-white overflow-hidden flex items-center"
@@ -110,5 +114,7 @@ export default function Hero() {
 
       </div>
     </section>
+    <Gloriya></Gloriya>
+    </>
   );
 }

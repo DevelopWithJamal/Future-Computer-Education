@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Briefcase, Zap } from 'lucide-react'; 
+import CourseSyllabus from './CourseSyllabus';
 
 interface Partner {
   name: string;
@@ -55,6 +56,7 @@ export default function Partners() {
   ];
 
   return (
+  <>
     <section
       id="partners"
       className="py-20 md:py-28 relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50"
@@ -153,5 +155,7 @@ export default function Partners() {
         }
       `}</style>
     </section>
+    <CourseSyllabus></CourseSyllabus>
+  </>
   );
 }
