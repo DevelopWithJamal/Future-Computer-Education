@@ -122,10 +122,9 @@ export default function Gallery() {
       </section>
 
       {/* 🌟 SECONDARY SLIDER SECTION (ImageAutoSlider) 🌟 */}
-      <section className="py-20 bg-gray-50">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Student and Event Highlights</h2>
+     
         <ImageAutoSlider /> 
-      </section>
+       
       
     </main>
   );

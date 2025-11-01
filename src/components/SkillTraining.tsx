@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Monitor, Scissors } from 'lucide-react';
+import { Monitor, Scissors, Network } from 'lucide-react';
 
 interface Skill {
   title: string;
@@ -37,6 +37,11 @@ export default function SkillTraining() {
       icon: <Scissors size={28} />,
       description: 'Hands-on stitching, designing, and garment making techniques.',
     },
+    {
+      title: 'Hardware & Networking',
+      icon: <Network size={28} />,
+      description: 'Learn computer hardware assembly, system troubleshooting, and network setup with practical sessions.',
+    },
   ];
 
   return (
@@ -61,7 +66,7 @@ export default function SkillTraining() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skill, idx) => (
             <div
               key={idx}
