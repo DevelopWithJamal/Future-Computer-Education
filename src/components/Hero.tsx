@@ -1,7 +1,6 @@
 import { ChevronRight, Sparkles, MessageCircle, TrendingUp } from 'lucide-react';
 import heroVideo from '../video/hero.mp4';
-import TnkskillCourse from './TnkskillCourse';
-import CourseSyllabus from './CourseSyllabus';
+ 
 import Gloriya from './Gloriya';
 
 export default function Hero() {

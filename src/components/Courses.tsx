@@ -1,20 +1,9 @@
 import { Code, Brain, Database, Cpu, Globe, Smartphone, ShoppingBasket } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import BasicCourses from "./BasicCourses";
 
 export default function Courses() {
-  const [isVisible, setIsVisible] = useState(false);
   const whatsappNumber = "+919994707665";
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setIsVisible(true)),
-      { threshold: 0.2 }
-    );
-    const section = document.getElementById("courses");
-    if (section) observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   const handleWhatsApp = (course: string) => {
     const msg = encodeURIComponent(`Hello, I am interested in the "${course}" course.`);
@@ -22,104 +11,213 @@ export default function Courses() {
   };
 
   const courses = [
-    { icon: Code, title: "Python Programming", description: "Learn Python from basics to advanced with data structures, OOP, and libraries like NumPy & Pandas.", duration: "3 months", level: "Beginner to Advanced", color: "from-blue-400 to-sky-500" },
-    { icon: Code, title: "Java Programming", description: "Master Java fundamentals, OOP, and backend development using modern frameworks.", duration: "3 months", level: "Beginner to Advanced", color: "from-orange-400 to-red-500" },
-    { icon: Code, title: "C++ Programming", description: "Enhance your problem-solving and system-level coding skills with C++.", duration: "3 months", level: "Beginner to Advanced", color: "from-indigo-400 to-blue-600" },
-    { icon: Brain, title: "AI & Generative AI", description: "Explore AI, ML, DL, and generative models like ChatGPT and Stable Diffusion.", duration: "4 months", level: "Intermediate", color: "from-purple-500 to-indigo-600" },
-    { icon: Database, title: "SQL & Databases", description: "Master SQL, data modeling, and relational database design for modern applications.", duration: "2 months", level: "Beginner to Advanced", color: "from-yellow-400 to-amber-500" },
-    { icon: Brain, title: "Data Science & Analytics", description: "Perform data visualization, predictive analytics, and storytelling with Power BI.", duration: "4 months", level: "Intermediate", color: "from-teal-400 to-cyan-500" },
-    { icon: Globe, title: "Full Stack Development", description: "Become a complete developer mastering frontend, backend, databases, and deployment.", duration: "4 months", level: "Advanced", color: "from-blue-400 to-indigo-600" },
-    { icon: Smartphone, title: "Mobile App Development", description: "Build cross-platform mobile apps for Android & iOS using Flutter or React Native.", duration: "3 months", level: "Intermediate", color: "from-pink-400 to-rose-600" },
-    { icon: Cpu, title: "Robotics & IoT", description: "Design robots, work with Arduino/Raspberry Pi, and create IoT-powered solutions.", duration: "3 months", level: "All Levels", color: "from-red-400 to-rose-500" },
-    { icon: Database, title: "Power BI", description: "Create dashboards and business reports with Power BI & Excel integration.", duration: "3 months", level: "Intermediate", color: "from-indigo-400 to-blue-700" },
-    { icon: ShoppingBasket, title: "E-Commerce & Digital Skills", description: "Learn to build online stores, manage SEO, and run ad campaigns effectively.", duration: "3 months", level: "Intermediate", color: "from-yellow-500 to-orange-600" },
-    { icon: Code, title: "CAD & Computer Design", description: "Master CAD tools for mechanical, architectural, and 3D modeling design.", duration: "3 months", level: "Intermediate", color: "from-cyan-400 to-sky-600" },
+    {
+      icon: Code,
+      title: "Python Programming",
+      description:
+        "Master Python from basics to advanced, including data structures, OOP, and powerful libraries like NumPy & Pandas.",
+      duration: "3 months",
+      level: "Beginner to Advanced",
+      color: "from-cyan-400 to-blue-500",
+    },
+    {
+      icon: Code,
+      title: "Java Programming",
+      description: "Learn Java from scratch with OOP concepts and backend frameworks like Spring Boot.",
+      duration: "3 months",
+      level: "Intermediate",
+      color: "from-orange-400 to-red-500",
+    },
+    {
+      icon: Code,
+      title: "C++ Programming",
+      description: "Enhance problem-solving and logical thinking with one of the most powerful languages.",
+      duration: "3 months",
+      level: "Beginner to Advanced",
+      color: "from-sky-400 to-indigo-500",
+    },
+    {
+      icon: Brain,
+      title: "AI & Generative AI",
+      description:
+        "Build the future with Artificial Intelligence, Machine Learning, and Generative AI tools like ChatGPT.",
+      duration: "4 months",
+      level: "Advanced",
+      color: "from-purple-500 to-indigo-700",
+    },
+    {
+      icon: Database,
+      title: "SQL & Databases",
+      description:
+        "Understand database design, normalization, and query optimization in SQL and MySQL.",
+      duration: "2 months",
+      level: "Intermediate",
+      color: "from-yellow-400 to-amber-600",
+    },
+    {
+      icon: Globe,
+      title: "Full Stack Development",
+      description:
+        "Learn MERN Stack, APIs, authentication, and cloud deployment for production-ready apps.",
+      duration: "4 months",
+      level: "Advanced",
+      color: "from-blue-400 to-indigo-600",
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile App Development",
+      description:
+        "Build beautiful, cross-platform mobile apps using Flutter and React Native.",
+      duration: "3 months",
+      level: "Intermediate",
+      color: "from-pink-400 to-rose-600",
+    },
+    {
+      icon: Cpu,
+      title: "Robotics & IoT",
+      description:
+        "Integrate sensors, microcontrollers, and IoT technologies to build smart systems.",
+      duration: "3 months",
+      level: "All Levels",
+      color: "from-red-400 to-rose-600",
+    },
+    {
+      icon: ShoppingBasket,
+      title: "E-Commerce & Digital Skills",
+      description:
+        "Develop, market, and manage online businesses with SEO and ad campaign expertise.",
+      duration: "3 months",
+      level: "Intermediate",
+      color: "from-yellow-500 to-orange-600",
+    },
+    {
+      icon: Database,
+      title: "Power BI & Data Visualization",
+      description:
+        "Create stunning dashboards, reports, and business intelligence insights with Power BI.",
+      duration: "3 months",
+      level: "Intermediate",
+      color: "from-teal-400 to-cyan-500",
+    },
+    {
+      icon: Code,
+      title: "CAD & Computer Design",
+      description: "Design with precision using AutoCAD and 3D tools for architecture and engineering.",
+      duration: "3 months",
+      level: "Intermediate",
+      color: "from-cyan-400 to-blue-600",
+    },
   ];
+
+  // Motion Variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+    },
+  };
+
+  const card = {
+    hidden: { opacity: 0, y: 40, scale: 0.9 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
 
   return (
     <section
       id="courses"
-      className="relative py-20 bg-gradient-to-b from-white via-blue-50/30 to-white overflow-hidden"
+      className="relative py-24 bg-gradient-to-br from-white via-blue-50 to-cyan-50 overflow-hidden"
     >
-      {/* Floating gradient lights */}
-      <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200/20 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl animate-float-delay"></div>
+      {/* Soft Ambient Glows */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-cyan-200/30 blur-[180px] rounded-full" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-300/30 blur-[180px] rounded-full" />
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        {/* Header */}
-        <h2
-          className={`text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+      <div className="relative z-10 container mx-auto px-6">
+        {/* Header Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          Premium <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Technology Courses</span>
-        </h2>
-        <p
-          className={`text-lg md:text-xl text-gray-600 mt-4 transition-all duration-700 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          Crafted by industry professionals — tailored to shape your future.
-        </p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+            Explore Our{" "}
+            <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-transparent bg-clip-text">
+              Premium Courses
+            </span>
+          </h2>
+          <p className="text-lg text-gray-600 mt-4">
+            Learn with passion. Build real-world projects. Become industry-ready.
+          </p>
+        </motion.div>
 
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
-          {courses.map((course, i) => (
-            <div
-              key={i}
-              className={`group bg-white/70 backdrop-blur-xl border border-gray-100 shadow-[0_8px_24px_rgba(0,0,0,0.05)] rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${i * 70}ms` }}
+        {/* Animated Grid */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
+          {courses.map((course, index) => (
+            <motion.div
+              key={index}
+              variants={card}
+              whileHover={{
+                y: -8,
+                scale: 1.03,
+                rotateX: 2,
+                rotateY: -2,
+                boxShadow: "0px 15px 30px rgba(56,189,248,0.25)",
+              }}
+              transition={{ type: "spring", stiffness: 150, damping: 12 }}
+              className="group relative bg-white/80 backdrop-blur-lg border border-gray-100 shadow-md rounded-3xl p-8 transition-all duration-500 hover:shadow-2xl hover:border-cyan-300"
             >
+              {/* Icon */}
               <div
-                className={`w-16 h-16 bg-gradient-to-br ${course.color} flex items-center justify-center rounded-2xl mb-5 group-hover:scale-110 transition-transform duration-500`}
+                className={`w-16 h-16 bg-gradient-to-br ${course.color} flex items-center justify-center rounded-2xl mb-5 shadow-lg shadow-cyan-200/40`}
               >
-                <course.icon size={36} className="text-white" />
+                <course.icon size={34} className="text-white" />
               </div>
 
+              {/* Content */}
               <h3 className="text-2xl font-bold text-gray-900 mb-3">{course.title}</h3>
               <p className="text-gray-600 mb-4 text-sm leading-relaxed">{course.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 text-sm bg-gray-100 border border-gray-200 rounded-full text-gray-700">
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2 mb-5">
+                <span className="px-3 py-1 text-sm bg-cyan-50 border border-cyan-100 rounded-full text-cyan-700">
                   {course.duration}
                 </span>
-                <span className="px-3 py-1 text-sm bg-gray-100 border border-gray-200 rounded-full text-gray-700">
+                <span className="px-3 py-1 text-sm bg-blue-50 border border-blue-100 rounded-full text-blue-700">
                   {course.level}
                 </span>
               </div>
 
-              <button
+              {/* WhatsApp CTA */}
+              <motion.button
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => handleWhatsApp(course.title)}
-                className="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+                className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300"
               >
                 Enquire on WhatsApp
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Floating animations */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(20px); }
-        }
-        @keyframes float-delay {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-        .animate-float-delay {
-          animation: float-delay 10s ease-in-out infinite;
-        }
-      `}</style>
-
-      <BasicCourses />
+      {/* Basic Courses Section */}
+      <div className="mt-24">
+        <BasicCourses />
+      </div>
     </section>
   );
 }
