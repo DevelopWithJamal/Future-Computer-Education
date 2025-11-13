@@ -1,13 +1,14 @@
+import React from "react";
 import { motion } from "framer-motion";
 
 const Gloriya: React.FC = () => {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-gradient-to-b from-white via-blue-50 to-blue-100 text-slate-900 px-6 py-20">
-      {/* Background Decorative Blur Circles */}
+      {/* ===== Background Decorative Blur Circles ===== */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-300/30 blur-3xl rounded-full animate-pulse" />
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-400/30 blur-3xl rounded-full animate-pulse delay-2000" />
 
-      {/* Title */}
+      {/* ===== Title ===== */}
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,7 +21,7 @@ const Gloriya: React.FC = () => {
         </span>
       </motion.h1>
 
-      {/* Description */}
+      {/* ===== Description ===== */}
       <motion.p
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -33,14 +34,14 @@ const Gloriya: React.FC = () => {
         life!
       </motion.p>
 
-      {/* Video Showcase */}
+      {/* ===== Video Showcase ===== */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6, duration: 1 }}
-        className="relative group"
+        className="relative group w-full max-w-4xl"
       >
-        {/* Outer Glow */}
+        {/* Outer Glow Animation */}
         <motion.div
           animate={{
             scale: [1, 1.05, 1],
@@ -53,24 +54,28 @@ const Gloriya: React.FC = () => {
         {/* Video Frame */}
         <div className="rounded-3xl overflow-hidden border border-cyan-500/30 shadow-[0_0_50px_rgba(56,189,248,0.4)] bg-white/70 backdrop-blur-2xl p-3 flex justify-center transition-all duration-500 hover:scale-105">
           <video
-            src="/videos/gloriya.mp4" // Make sure path is correct: public/videos/gloriya.mp4
+            src="/videos/gloriya.mp4" // ✅ Make sure the path is correct: public/videos/gloriya.mp4
             controls
             autoPlay
             muted
             loop
             playsInline
+            preload="none"
             style={{
-              height: "500px",
-              width: "auto",
+              width: "100%",
+              maxHeight: "480px",
               borderRadius: "1rem",
               objectFit: "contain",
             }}
             className="shadow-[0_0_40px_rgba(56,189,248,0.3)]"
-          />
+          >
+            <source src="/videos/gloriya.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </motion.div>
 
-      {/* Tagline */}
+      {/* ===== Tagline ===== */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -79,6 +84,17 @@ const Gloriya: React.FC = () => {
       >
         “Gloriya — The Voice of Future Computer Education”
       </motion.p>
+
+      {/* ===== CTA Button ===== */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 200 }}
+        className="mt-8 px-8 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-lg font-semibold shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
+        onClick={() => alert("Coming soon! Gloriya AI is preparing to launch 🚀")}
+      >
+        🚀 Meet Gloriya Now
+      </motion.button>
     </section>
   );
 };

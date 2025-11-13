@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Briefcase,
   Book,
@@ -12,143 +10,67 @@ import {
   Laptop,
   Phone,
   MessageCircle,
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import Contact from '../components/Contact';
+} from "lucide-react";
+import { motion } from "framer-motion";
 
-const PHONE_NUMBER = '+919363706033';
+// ✅ Phone Number
+const PHONE_NUMBER = "+919363706033";
 
-// ✅ Helper for WhatsApp Link
+// ✅ Helper: WhatsApp Link Generator
 const getWhatsAppLink = (course: string) =>
   `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
     `Hello! 👋 I’m interested in the course "${course}" at Alagappa University (Challenge Study Centre, Nagapattinam). Please share more details.`
   )}`;
 
-// ✅ Course Lists
+// ✅ Course Data
 const ugCourses = [
-  {
-    title: 'B.A (TAMIL)',
-    icon: Book,
-    desc: 'Explore Tamil literature, culture, and communication.',
-  },
-  {
-    title: 'B.A (ENGLISH)',
-    icon: Book,
-    desc: 'Develop expertise in English language and communication.',
-  },
-  {
-    title: 'B.SC (MATHEMATICS)',
-    icon: Cpu,
-    desc: 'Strengthen analytical and quantitative problem-solving skills.',
-  },
-  {
-    title: 'B.SC (COMPUTER SCIENCE)',
-    icon: Code,
-    desc: 'Learn programming, data structures, and system design.',
-  },
-  {
-    title: 'B.COM (COMPUTER APPLICATION)',
-    icon: Cpu,
-    desc: 'Blend commerce with IT and business application tools.',
-  },
-  {
-    title: 'B.B.A',
-    icon: Briefcase,
-    desc: 'Gain essential knowledge in business and management.',
-  },
-  {
-    title: 'B.COM',
-    icon: Briefcase,
-    desc: 'Build a strong foundation in finance, accounts, and business.',
-  },
+  { title: "B.A (TAMIL)", icon: Book, desc: "Explore Tamil literature, culture, and communication." },
+  { title: "B.A (ENGLISH)", icon: Book, desc: "Develop expertise in English language and communication." },
+  { title: "B.SC (MATHEMATICS)", icon: Cpu, desc: "Strengthen analytical and quantitative problem-solving skills." },
+  { title: "B.SC (COMPUTER SCIENCE)", icon: Code, desc: "Learn programming, data structures, and system design." },
+  { title: "B.COM (COMPUTER APPLICATION)", icon: Cpu, desc: "Blend commerce with IT and business application tools." },
+  { title: "B.B.A", icon: Briefcase, desc: "Gain essential knowledge in business and management." },
+  { title: "B.COM", icon: Briefcase, desc: "Build a strong foundation in finance, accounts, and business." },
 ];
 
 const mbaSpecializations = [
-  'Human Resource Management',
-  'Marketing Management',
-  'Financial Management',
-  'International Business',
-  'Corporate Secretaryship',
-  'Project Management',
-  'Corporate Management',
-  'Banking and Finance',
-  'Hospital Management',
-  'Tourism Management',
-  'Education Management',
-  'Retail Management',
-  'Technology Management',
-  'Logistics Management',
-  'System Management',
-  'Co-Operative Management',
+  "Human Resource Management",
+  "Marketing Management",
+  "Financial Management",
+  "International Business",
+  "Corporate Secretaryship",
+  "Project Management",
+  "Corporate Management",
+  "Banking and Finance",
+  "Hospital Management",
+  "Tourism Management",
+  "Education Management",
+  "Retail Management",
+  "Technology Management",
+  "Logistics Management",
+  "System Management",
+  "Co-Operative Management",
 ];
 
 const diplomaCourses = [
-  {
-    title: 'AI & Machine Learning',
-    icon: Cpu,
-    desc: 'Master AI techniques, data science, and intelligent systems.',
-  },
-  {
-    title: 'Computer Applications',
-    icon: Code,
-    desc: 'Develop computer skills and application software knowledge.',
-  },
-  {
-    title: 'Cyber Security',
-    icon: Globe,
-    desc: 'Learn to protect systems and networks from cyber threats.',
-  },
-  {
-    title: 'Montessori Education',
-    icon: Users,
-    desc: 'Train to nurture young minds with Montessori methods.',
-  },
+  { title: "AI & Machine Learning", icon: Cpu, desc: "Master AI techniques, data science, and intelligent systems." },
+  { title: "Computer Applications", icon: Code, desc: "Develop computer skills and application software knowledge." },
+  { title: "Cyber Security", icon: Globe, desc: "Learn to protect systems and networks from cyber threats." },
+  { title: "Montessori Education", icon: Users, desc: "Train to nurture young minds with Montessori methods." },
 ];
 
 const certificateCourses = [
-  {
-    title: 'Astrology (Tamil Medium)',
-    icon: Globe,
-    desc: 'Learn the science of astrology in Tamil medium.',
-  },
-  {
-    title: 'C Programming',
-    icon: Code,
-    desc: 'Understand programming fundamentals using C language.',
-  },
-  {
-    title: 'Computer Fundamentals',
-    icon: Laptop,
-    desc: 'Gain basic computer literacy and digital knowledge.',
-  },
-  {
-    title: 'Gender Studies',
-    icon: Users,
-    desc: 'Study gender roles, equality, and empowerment.',
-  },
-  {
-    title: 'GST',
-    icon: Calculator,
-    desc: 'Learn Goods and Services Tax for business professionals.',
-  },
-  {
-    title: 'Library and Information Science (LIS)',
-    icon: Book,
-    desc: 'Train to manage libraries and information systems.',
-  },
-  {
-    title: 'Office Automation',
-    icon: Briefcase,
-    desc: 'Enhance productivity using modern office tools.',
-  },
-  {
-    title: 'Web Designing',
-    icon: Palette,
-    desc: 'Create responsive and beautiful websites.',
-  },
+  { title: "Astrology (Tamil Medium)", icon: Globe, desc: "Learn the science of astrology in Tamil medium." },
+  { title: "C Programming", icon: Code, desc: "Understand programming fundamentals using C language." },
+  { title: "Computer Fundamentals", icon: Laptop, desc: "Gain basic computer literacy and digital knowledge." },
+  { title: "Gender Studies", icon: Users, desc: "Study gender roles, equality, and empowerment." },
+  { title: "GST", icon: Calculator, desc: "Learn Goods and Services Tax for business professionals." },
+  { title: "Library and Information Science (LIS)", icon: Book, desc: "Train to manage libraries and information systems." },
+  { title: "Office Automation", icon: Briefcase, desc: "Enhance productivity using modern office tools." },
+  { title: "Web Designing", icon: Palette, desc: "Create responsive and beautiful websites." },
 ];
 
-// ✅ Course Card
+// ✅ Course Card Component
 function CourseCard({
   title,
   desc,
@@ -157,7 +79,7 @@ function CourseCard({
 }: {
   title: string;
   desc: string;
-  Icon: any;
+  Icon: React.ElementType;
   color?: string;
 }) {
   return (
@@ -169,12 +91,12 @@ function CourseCard({
       <div className="flex flex-col items-center">
         <div
           className={`w-16 h-16 flex items-center justify-center mb-4 rounded-full ${
-            color || 'bg-blue-100'
+            color || "bg-blue-100"
           } group-hover:scale-110 transition-transform duration-300`}
         >
           <Icon
             size={28}
-            className={`${color ? 'text-white' : 'text-blue-600'}`}
+            className={`${color ? "text-white" : "text-blue-600"}`}
           />
         </div>
         <h3 className="font-semibold text-lg text-gray-900 mb-2">{title}</h3>
@@ -199,7 +121,7 @@ function CourseSection({
   color,
 }: {
   title: string;
-  courses: { title: string; desc?: string; icon?: any }[];
+  courses: { title: string; desc?: string; icon?: React.ElementType }[];
   color: string;
 }) {
   return (
@@ -216,7 +138,7 @@ function CourseSection({
           >
             <CourseCard
               title={course.title}
-              desc={course.desc || 'Explore your career path with us.'}
+              desc={course.desc || "Explore your career path with us."}
               Icon={course.icon || Briefcase}
               color={color}
             />
@@ -227,7 +149,17 @@ function CourseSection({
   );
 }
 
-// ✅ Main Page
+// ✅ Optional Contact Placeholder
+function Contact() {
+  return (
+    <div className="bg-blue-900 text-white py-10 text-center">
+      <h3 className="text-2xl font-semibold mb-2">Get in Touch</h3>
+      <p>Call us at <span className="font-bold">{PHONE_NUMBER}</span> or chat on WhatsApp for details.</p>
+    </div>
+  );
+}
+
+// ✅ Main Component
 export default function AlagappaUniversity() {
   return (
     <section className="relative w-full bg-gradient-to-b from-white via-blue-50 to-blue-100 overflow-hidden">
@@ -261,7 +193,7 @@ export default function AlagappaUniversity() {
               <Phone size={18} /> {PHONE_NUMBER}
             </a>
             <a
-              href={getWhatsAppLink('General Enquiry')}
+              href={getWhatsAppLink("General Enquiry")}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-500 text-white px-3 py-1.5 rounded-full hover:bg-green-600 transition-colors"
@@ -272,7 +204,7 @@ export default function AlagappaUniversity() {
         </div>
       </header>
 
-      {/* Body */}
+      {/* Main Body */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 text-center pt-28">
         <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
           Distance & Online Admission Centre
@@ -281,31 +213,18 @@ export default function AlagappaUniversity() {
           A+ Grade by NAAC (CGPA: 3.64) • Category-I University by MHRD-UGC
         </p>
 
-        {/* Courses */}
-        <CourseSection
-          title="Undergraduate (UG) Courses"
-          courses={ugCourses}
-          color="bg-blue-600"
-        />
+        <CourseSection title="Undergraduate (UG) Courses" courses={ugCourses} color="bg-blue-600" />
         <CourseSection
           title="MBA Specializations (2 Years)"
           courses={mbaSpecializations.map((spec) => ({
             title: spec,
             icon: Briefcase,
-            desc: 'Specialize in your chosen MBA field.',
+            desc: "Specialize in your chosen MBA field.",
           }))}
           color="bg-indigo-600"
         />
-        <CourseSection
-          title="Diploma Courses"
-          courses={diplomaCourses}
-          color="bg-green-600"
-        />
-        <CourseSection
-          title="Certificate Courses"
-          courses={certificateCourses}
-          color="bg-purple-600"
-        />
+        <CourseSection title="Diploma Courses" courses={diplomaCourses} color="bg-green-600" />
+        <CourseSection title="Certificate Courses" courses={certificateCourses} color="bg-purple-600" />
 
         {/* Location */}
         <div className="mt-16 mb-12">
@@ -313,8 +232,7 @@ export default function AlagappaUniversity() {
             Challenge Study Centre - Nagapattinam
           </h2>
           <p className="text-slate-700">
-            Neela Mela Vadam Pokki Street, Near Devi Theatre (Professional
-            Courier Upstairs)
+            Neela Mela Vadam Pokki Street, Near Devi Theatre (Professional Courier Upstairs)
           </p>
         </div>
       </div>
